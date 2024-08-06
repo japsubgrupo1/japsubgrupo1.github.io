@@ -1,0 +1,60 @@
+/* Estilos del cuerpo, dándole un ancho del total de la pantalla y esciondiendo la scrollbar horizontal, a la vez que seteando la fuente "Raleway" para que la utilize todo el documento */
+body {
+    font-family: "Raleway", sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Añadimos sombra a la barra de navegación */
+.navbar {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+}
+
+/* Ajustamos el posicionamiento de los elementos de la barra de navegación */
+.navbar-nav {
+    margin-right: 3rem;
+}
+
+/* Ajustamos el posicionamiento de la imagen con el logo de JaP */
+#jap_logo {
+    margin-left: 3rem;
+}
+
+/* Damos fondo violeta a todo elemento con la clase text-white, que ya de por sí setea el color del texto en blanco */
+.text-white {
+    background-color: #82378C;
+}
+
+/* Ajustamos el márgen del div principal, utilizando !important ya que la clase de Bootstrap de por sí superpone nuestros cambios */
+.mt-5 {
+    margin-top: 4.65rem !important;
+}
+
+/* Justificamos el texto de los párrafos y listas */
+p, li {
+    text-align: justify;
+}
+
+/* Seteamos los títulos y subtítulos en negrita */
+.mb-4, .mb-3 {
+    font-weight: 800;
+}
+
+/* Damos márgen a los subtítulos */
+.mb-3 {
+    padding: 2.5px 0;
+}
+
+/* Cambiamos el color de los elementos con la etiqueta code, y los ponemos en negrita */
+code {
+    color: #0DAC35D5;
+    font-weight: bold;
+}
+
+/* Ajustamos el posicionamiento y tamaño de las imágenes */
+#imgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
