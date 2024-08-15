@@ -11,8 +11,10 @@ function login() {
         //Mostramos alerta de error en caso verdadero
         showAlertError();
     } else {
-        //Mostramso alerta de suceso en caso negativo
+        //Mostramos alerta de suceso en caso negativo
         showAlertSuccess();
+        //Y guardamos el estado loggedIn en localStorage, el cual vamos a evaluar en index.js
+        localStorage.setItem("loggedIn", "loggedIn");
     }
 }
 

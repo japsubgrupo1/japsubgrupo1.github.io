@@ -262,3 +262,14 @@ a.custom-card:hover {
 #loginBtn:hover {
   background-color: #A86500;
 }
+
+/* Adiciones a index.html */
+#logout {
+  cursor: pointer;
+  color: #AD0911;
+  transition: 0.25s color;
+}
+
+#logout:hover {
+  color: #E8101A;
+}

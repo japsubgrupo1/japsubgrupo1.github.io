@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", function(){
+    //Creamos condicional que checkee por la variable loggedIn en localStorage y compare si el valor fue el dado en la función login() en login.js
+    if(localStorage.getItem("loggedIn") === "loggedIn") {
+        renderIndexPage(); //En caso afirmativo, renderizamos la página
+    } else {
+        window.location.href = "login.html"; //En caso negativo, redirigimos a login.html
+    }
+});
+
+//Movemos el contenido original al ejecutarse el DOMContentLoaded a la función renderIndexPage
+function renderIndexPage() {
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
         window.location = "products.html"
@@ -11,4 +21,10 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
-});
+}
+
+//Creamos función para desconectarse
+function logout() {
+    localStorage.removeItem("loggedIn"); //Eliminamos la key de localStorage
+    window.location.reload(); //Recargamos la página
+}
