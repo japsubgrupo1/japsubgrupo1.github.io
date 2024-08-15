@@ -67,7 +67,8 @@ nav a {
   font-size: 38px;
 }
 
-footer {
+/* Modificado por el equipo para que se le aplique el mismo espaciado a la imágen con el logo */
+footer, #loginLogo {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
@@ -175,8 +176,9 @@ footer p {
   display: none;
 }
 
+/* Editando cálculo de tamaño del main, poasando de 100 a 90vh */
 main {
-  min-height: calc(100vh - 210px);
+  min-height: calc(90vh - 210px);
 }
 
 a.custom-card,
@@ -187,4 +189,76 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+
+/* Agregado por el equipo */
+#loginWindow {
+  /* Estas primeras tres líneas centran el elemento en cuestión, siendo el contenedor con los detalles de login */
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 446px;
+  padding: 50px 20px;
+  background-color: #212529;
+  border-radius: 10px;
+  font-family: 'Inria Sans', Arial, sans-serif;
+  font-size: 20px;
+  color: white;
+}
+
+#loginTitle {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#credentialsWindow {
+  display: flex; /* Utilizamos flexbox para mejor colocación de los contenedores */
+}
+
+.credentialLabel, .credentialInput {
+  flex-basis: 30%; /* Utilizamos flex-basis para indicar qué porcentaje del contenedor padre queremos que tome este elemento */
+  text-align: right;
+}
+
+.credentialLabel > label {
+  margin-top: 16px;
+}
+
+.credentialInput {
+  flex-basis: 85%; /* Este flex-basis reemplaza el valor que se le da a .credentialInput en la línea 218 */
+  text-align: right;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.credentialInput > input, #loginBtn {
+  border-radius: 3px;
+  border: 0;
+  width: 268px;
+  margin-top: 15px;
+}
+
+/* Este código de acá selecciona todo input con type="password" dentro de la clase credentialInput, esto se hace para que los puntos del medio al escribir la contraseña no sean minúsculos, como serían sin estos dos bloques */
+.credentialInput > input[type="password"] {
+  font: small-caption;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+/* Este código selecciona el placeholder (texto cuando no se escribió nada en el campo) del input anteriormente mencionado, cambiándole nuevamente la fuenta a Inria Sans, para que no quede con small-caption/Segoe UI */
+.credentialInput > input[type="password"]::placeholder {
+  font-family: 'Inria Sans', Arial, sans-serif;
+}
+
+#loginBtn {
+  width: 144px;
+  background-color: #F09100;
+  padding: 5px;
+  font-weight: bold;
+  transition: 0.25s background-color; /* Esto hace una mini-animación que cambia ligeramente el color del fondo cuando el mouse se pone arriba del botón */
+}
+
+/* La pseudoclase hover indica que el mouse está situado sobre el elemento indicado, en este caso el botón de ID loginBtn */
+#loginBtn:hover {
+  background-color: #A86500;
 }
