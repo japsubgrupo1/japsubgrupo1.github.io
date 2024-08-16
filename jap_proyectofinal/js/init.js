@@ -39,3 +39,9 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+//Creamos función para desconectarse
+function logout() {
+  localStorage.removeItem("loggedIn"); //Eliminamos la key de localStorage
+  window.location.href = "login.html"; //Redirigimos a login.html
+}

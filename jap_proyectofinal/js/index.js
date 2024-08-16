@@ -22,9 +22,3 @@ function renderIndexPage() {
         window.location = "products.html"
     });
 }
-
-//Creamos función para desconectarse
-function logout() {
-    localStorage.removeItem("loggedIn"); //Eliminamos la key de localStorage
-    window.location.reload(); //Recargamos la página
-}

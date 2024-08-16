@@ -263,13 +263,33 @@ a.custom-card:hover {
   background-color: #A86500;
 }
 
-/* Adiciones a index.html */
+/* Reseteamos el padding que añade la clase de Bootstrap alert-dismissible */
+.alert-dismissible {
+  padding-right: 1rem;
+}
+
+/* Estilizamos el botón de logout / Salir */
 #logout {
-  cursor: pointer;
+  cursor: pointer; /* Poner el cursor con un dedito, como en los demás nav-links */
   color: #AD0911;
-  transition: 0.25s color;
+  transition: 0.25s color; /* Transición al poner el mouse sobre el elemento */
 }
 
 #logout:hover {
-  color: #E8101A;
+  color: #E8101A; /* Color al que cambia el elemento al colocarle el mouse arriba */
+}
+
+/* Adicciones para la página de los productos */
+/* Posicionamos el contenedor con los productos */
+#productContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Posicionamos el texto con la cantidad de productos vendidos */
+#soldCounter {
+  display: flex;
+  flex-grow: 1; /* Acá hacemos que el elemento tome todo el tamaño restante de la Flexbox */
+  align-items: flex-end; /* Situamos el elemento al final del Flexbox, verticalmente */
+  justify-content: right; /* Situamos el elemento a la derecha */
 }
