@@ -1,14 +1,10 @@
 //Definimos array con los productos, originalmente vacía
 let productArray = [];
-let catTitle = document.getElementById("catTitle");
-let catDescription = document.getElementById("catDescription");
+let catTitle = document.getElementById("catTitle"); //Obtenemos el h2 con el futuro título de la categoría
+let catDescription = document.getElementById("catDescription"); //Obtenemos el p con la futura descripción de la categoría
 
 //Función para mostrar los productos
 function showProductList() {
-    //Obtenemos el h2 de id catTitle
-    //Editamos el texto del elemento llamado, para que contenga el nombre de la categoría selecionada (atributo catName)
-    //Los JSON a llamar se pueden ver en https://github.com/japceibal/emercado-api/tree/main/cats_products/
-
     //Definimos variable vacía para luego pasar al HTML
     let htmlContentToAppend = "";
     //For que recorre incrementalmente el array productArray, al cual se le pasa contenido en a línea 45
@@ -40,14 +36,15 @@ function showProductList() {
     document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
 }
 
+//Defimos función para ejecutar al clickearse el div de cada producto (atributo onclick en línea 17)
 function redirectToProductInfo() {
-    window.location.href = "product-info.html";
+    window.location.href = "product-info.html"; //Redirigimos a product-info.html
 }
 
 //Acciones a realizar apenas la página se carga
 document.addEventListener("DOMContentLoaded", function (e) {
     //Definimos categoryUrl, el cual va generar una URL comenzando con PRODUCTS_URL (https://japceibal.github.io/emercado-api/cats_products/, definida en init.js)
-    //A esta variable, se le agrega el valor de la key catID almacenada en localStorage, la cual define la función setCatID, en categories.js (línea 38)
+    //A esta variable se le agrega el valor de la key catID almacenada en localStorage, la cual define la función setCatID, en categories.js (línea 38)
     //A esto finalmente le añadimos el .json, tomándolo de EXT_TYPE para hacerlo más fancy (definido en init.js)
     //Un ejemplo de URL generado puede ser el de Autos, dando como resultado https://japceibal.github.io/emercado-api/cats_products/101.json
     const categoryUrl = `${PRODUCTS_URL}${localStorage.getItem("catID")}${EXT_TYPE}`;
@@ -55,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     //Traemos los datos
     getJSONData(categoryUrl).then(function(resultObj) {
         if (resultObj.status === "ok") { //Acción cuando la promesa da "ok"
-            catTitle.textContent = resultObj.data.catName;
+            catTitle.textContent = resultObj.data.catName; //Modificamos el texto de catTitle para añadir el nombre de la categoría
             productArray = resultObj.data.products; //productArray toma todos los elementos del array de objetos "products", encontrado en la data de la respuesta de la promesa
             showProductList(); //Mostrar elementos en pantalla
         } else { //Acción cuando la promesa no da "ok"
