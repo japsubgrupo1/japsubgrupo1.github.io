@@ -18,7 +18,7 @@ function showProductList() {
 
         //Editamos variable htmlContentToAppend para que se construya la página con la estructura deseada
         htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action cursor-active">
+            <div onclick="redirectToProductInfo()" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${product.image}" alt="${product.name}" class="img-thumbnail">
@@ -38,20 +38,10 @@ function showProductList() {
 
     //Finalmente, le pasamos el contenido de htmlContentToAppend al HTML (reemplazando el HTML interno de el div de id prod-list-container, el cual originalmente está vacío)
     document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
+}
 
-    //Obtenemos array con todos los elementos de clase "list-group-item" (cada producto)
-    let elementos = document.getElementsByClassName("list-group-item");
-
-    //For que recorre incrementalmente el array elementos
-    for (i = 0; i < elementos.length; i++) {
-        //Definimos variable elemento, la cual va a equivaler al elemento que el for está evaluando
-        elemento = elementos[i];
-
-        //Añadimos manejador de evento de click a cada uno de los productos
-        elemento.addEventListener("click", function () {
-            window.location.href = "product-info.html"; //Redirigimos a product-info.html (funcionalidad en desarrollo)
-        });
-    }
+function redirectToProductInfo() {
+    window.location.href = "product-info.html";
 }
 
 //Acciones a realizar apenas la página se carga
