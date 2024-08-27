@@ -42,6 +42,34 @@ let getJSONData = function(url){
 
 //Creamos función para desconectarse
 function logout() {
-  localStorage.removeItem("loggedIn"); //Eliminamos la key de localStorage
+  localStorage.removeItem("loggedIn"); //Eliminamos la key de loggeo de localStorage
+  localStorage.removeItem("username"); //Eliminamos la key del nombre de usuario de localStorage
   window.location.href = "login.html"; //Redirigimos a login.html
 }
+
+//Creamos función para renderizar nombre de usuario
+function renderUsername() {
+  //Obtenemos nav-link vacío para popular con el nombre de usuario
+  const userLogout = document.getElementById("userLogout");
+  //Cambiamos el texto del mismo elemento para que popule nuestro nombre de usuario, seguido de una barra (|)
+  userLogout.textContent = `${localStorage.getItem("username")} | `;
+  //Llamamos a la función para renderizar la opción de deslogueo
+  renderLogoutLabel();
+}
+
+//Creamos función para renderizar opción de deslogueo
+function renderLogoutLabel() {
+  //Creamos elemento p de nombre logoutLabel
+  const logoutLabel = document.createElement("p");
+  //Seteamos id para nuestro elemento
+  logoutLabel.setAttribute("id", "logoutLabel");
+  //Seteamos atributo onclick para que al apretarse ejecute la función logout()
+  logoutLabel.setAttribute("onclick", "logout()");
+  //Editamos el texto de nuestro elemento, para que diga "Salir"
+  logoutLabel.textContent = "Salir";
+  //Seteamos el elemento como hijo de userLogout
+  userLogout.appendChild(logoutLabel);
+}
+
+//Finalmente, llamamos a la función renderUsername(), para que renderize el nombre de usuario y la opción para desloguearse
+renderUsername();

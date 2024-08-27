@@ -268,14 +268,15 @@ a.custom-card:hover {
   padding-right: 1rem;
 }
 
-/* Estilizamos el botón de logout / Salir */
-#logout {
+/* Estilizamos el texto con el nombre de usuario y la opción para desloguearse */
+#logoutLabel {
+  display: inline; /* Le damos display inline para que se renderize dentro de la misma linea que el nombre de usuario */
   cursor: pointer; /* Poner el cursor con un dedito, como en los demás nav-links */
   color: #AD0911;
   transition: 0.25s color; /* Transición al poner el mouse sobre el elemento */
 }
 
-#logout:hover {
+#logoutLabel:hover {
   color: #E8101A; /* Color al que cambia el elemento al colocarle el mouse arriba */
 }
 
