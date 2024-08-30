@@ -192,23 +192,33 @@ a.custom-card:hover {
 }
 
 /* Agregado por el equipo */
+#loginLogo {
+  width: 100%;
+  max-width: 400px;
+}
+
 #loginWindow {
   /* Estas primeras tres líneas centran el elemento en cuestión, siendo el contenedor con los detalles de login */
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  width: 446px;
-  padding: 50px 20px;
+  width: 100%;
+  max-width: 450px;
+  padding: 3.5% 1.5%;
   background-color: #212529;
   border-radius: 10px;
   font-family: 'Inria Sans', Arial, sans-serif;
-  font-size: 20px;
   color: white;
 }
 
 #loginTitle {
+  font-size: 2em;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 11.5%;
+}
+
+#loginSpace:after {
+  content: " ";
 }
 
 #credentialsWindow {
@@ -221,28 +231,30 @@ a.custom-card:hover {
 }
 
 .credentialLabel > label {
-  margin-top: 16px;
+  font-size: 1.3em;
+  margin-top: 15%;
 }
 
 .credentialInput {
-  flex-basis: 85%; /* Este flex-basis reemplaza el valor que se le da a .credentialInput en la línea 218 */
+  flex-basis: 80%; /* Este flex-basis reemplaza el valor que se le da a .credentialInput en la línea 218 */
   text-align: right;
-  font-size: 16px;
-  line-height: 30px;
+  font-size: 1em;
+  line-height: 2em;
 }
 
 .credentialInput > input, #loginBtn {
   border-radius: 3px;
   border: 0;
-  width: 268px;
-  margin-top: 15px;
+  width: 90%;
+  max-width: 270px;
+  margin-top: 5%;
 }
 
 /* Este código de acá selecciona todo input con type="password" dentro de la clase credentialInput, esto se hace para que los puntos del medio al escribir la contraseña no sean minúsculos, como serían sin estos dos bloques */
 .credentialInput > input[type="password"] {
   font: small-caption;
-  font-size: 16px;
-  line-height: 30px;
+  font-size: 1em;
+  line-height: 2em;
 }
 
 /* Este código selecciona el placeholder (texto cuando no se escribió nada en el campo) del input anteriormente mencionado, cambiándole nuevamente la fuenta a Inria Sans, para que no quede con small-caption/Segoe UI */
@@ -251,9 +263,10 @@ a.custom-card:hover {
 }
 
 #loginBtn {
-  width: 144px;
+  width: 100%;
+  max-width: 150px;
   background-color: #F09100;
-  padding: 5px;
+  padding: 1.5%;
   font-weight: bold;
   transition: 0.25s background-color; /* Esto hace una mini-animación que cambia ligeramente el color del fondo cuando el mouse se pone arriba del botón */
 }
@@ -293,4 +306,85 @@ a.custom-card:hover {
   flex-grow: 1; /* Acá hacemos que el elemento tome todo el tamaño restante de la Flexbox */
   align-items: flex-end; /* Situamos el elemento al final del Flexbox, verticalmente */
   justify-content: right; /* Situamos el elemento a la derecha */
+}
+
+/* Media Queries */
+/* Celulares - hasta 568px */
+@media (max-width: 568px) {
+  #loginLogo {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+  }
+
+  #loginWindow {
+    background-color: #F8F9FA;
+  }
+
+  #loginTitle {
+    font-size: 2.7em;
+    color: #212529;
+    margin-bottom: 5%;
+  }
+
+  #loginL, #loginSpace {
+    color: #F09100;
+  }
+
+  #loginSpace {
+    content: "•"
+  }
+
+  #loginSpace::after {
+    content: "•";
+  }
+
+  #credentialsWindow {
+    justify-content: center;
+  }
+
+  .credentialLabel {
+    display: none;
+  }
+
+  .credentialInput {
+    flex-basis: 90%;
+  }
+
+  .credentialInput > input, .credentialInput > input::placeholder {
+    background-color: #212529;
+    width: 100%;
+    max-width: none;
+    line-height: 3em;
+    padding-left: 3%;
+    margin-top: 1%;
+    font-size: 1.2em;
+    color: #F8F9FA;
+  }
+
+  .credentialInput > input[type="password"] {
+    line-height: 3em;
+    font-size: 1.2em;
+  }
+
+  #loginBtn {
+    width: 80%;
+    max-width: 100%;
+    line-height: 3em;
+    margin-top: 5%;
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  footer.text-muted {
+    font-size: 0.8em;
+    text-align: center;
+  }
+
+  .float-end {
+    display: none;
+  }
 }
