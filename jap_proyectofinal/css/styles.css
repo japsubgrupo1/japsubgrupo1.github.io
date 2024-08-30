@@ -293,3 +293,15 @@ a.custom-card:hover {
   align-items: flex-end; /* Situamos el elemento al final del Flexbox, verticalmente */
   justify-content: right; /* Situamos el elemento a la derecha */
 }
+@media screen and (max-width:320px) {
+  .col-3{
+    width: 100%;
+  }
+  
+}
+@media screen and (max-width:768px) {
+  .col-3{
+    width: 100%;
+  }
+  
+}
