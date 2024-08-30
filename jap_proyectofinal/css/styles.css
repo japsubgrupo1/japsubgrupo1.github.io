@@ -293,3 +293,56 @@ a.custom-card:hover {
   align-items: flex-end; /* Situamos el elemento al final del Flexbox, verticalmente */
   justify-content: right; /* Situamos el elemento a la derecha */
 }
+
+
+@media (max-width:1024px){
+
+  body{
+    background-color:#f5F5F5;
+  }
+
+/* repliqué lo que está para el formato celular para que cambie el título del login pero le modifiqué los colores para que se vea*/
+
+  #loginTitle {
+    font-size: 2.7em;
+    color: #ffffff;
+    margin-bottom: 5%;
+  }
+
+  #loginL, #loginSpace {
+    color: #F09100;
+  }
+
+  #loginSpace {
+    content: "•"
+  }
+
+  #loginSpace::after {
+    content: "•";
+  }
+
+  /* elimina la etiqueta de los input*/
+  .credentialLabel{
+    display: none;
+  }
+
+  .pb-5{
+    position: relative;
+  }
+
+  /* puse que el hijo sea absoluto al padre para que todo lo que ocupe de espacio sea del padre y no de toda la página*/
+
+  #loginWindow{
+    position: absolute;
+    top: 50%;
+    left:50%;
+  /*definí top y left para marcar la posición final, son como coordenadas*/
+    transform: translate(-50%,-50%);
+  /*inmoviliza la posición definida anteriormente*/ 
+    margin: 0px auto;
+  }
+
+  img#loginLogo{
+    width: 70%;
+  }
+}
