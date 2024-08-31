@@ -297,3 +297,20 @@ a.custom-card:hover {
   align-items: flex-end; /* Situamos el elemento al final del Flexbox, verticalmente */
   justify-content: right; /* Situamos el elemento a la derecha */
 }
+#prod-list-container {
+  margin: 0 auto; /* Centrará el contenedor */
+  max-width: 80%; /* Define un ancho máximo relativo al contenedor padre */
+  padding: 0 2%; /* Añade un pequeño padding relativo al ancho del contenedor */
+}
+@media screen and (max-width:320px) {
+  .col-3{
+    width: 100%;
+  }
+  
+}
+@media screen and (max-width:768px) {
+  .col-3{
+    width: 100%;
+  }
+  
+}
