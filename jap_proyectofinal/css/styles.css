@@ -294,12 +294,24 @@ a.custom-card:hover {
   justify-content: right; /* Situamos el elemento a la derecha */
 }
 @media screen and (max-width:320px) {
+  #prod-list-container {
+    margin: 0 auto; /* Centrará el contenedor */
+    max-width: 80%; /* Define un ancho máximo relativo al contenedor padre */
+    padding: 0 2%; /* Añade un pequeño padding relativo al ancho del contenedor */
+}
+
   .col-3{
     width: 100%;
   }
   
 }
 @media screen and (max-width:768px) {
+  #prod-list-container {
+    margin: 0 auto; /* Centrará el contenedor */
+    max-width: 80%; /* Define un ancho máximo relativo al contenedor padre */
+    padding: 0 2%; /* Añade un pequeño padding relativo al ancho del contenedor */
+}
+
   .col-3{
     width: 100%;
   }
