@@ -16,13 +16,13 @@ function showProductList() {
         htmlContentToAppend += `
             <div onclick="redirectToProductInfo()" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-3" id="productImg">
                         <img src="${product.image}" alt="${product.name}" class="img-thumbnail">
                     </div>
                     <div class="col" id="productContainer">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${product.name}</h4>
-                            <h4 class="mb-1">${product.currency} ${product.cost}</h4>
+                        <div class="d-flex w-100 justify-content-between" id="productMain">
+                            <h4 class="mb-1" id="productName">${product.name}</h4>
+                            <h4 class="mb-1" id="productCost">${product.currency} ${product.cost}</h4>
                         </div>
                         <p class="mb-1">${product.description}</p>
                         <small class="text-muted" id="soldCounter">${product.soldCount} vendido(s)</small>
