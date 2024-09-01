@@ -192,13 +192,15 @@ a.custom-card:hover {
 }
 
 /* Agregado por el equipo */
+/* Logo en la página de login */
 #loginLogo {
-  width: 100%;
+  width: 70%;
   max-width: 400px;
 }
 
+/* Ventana de login */
 #loginWindow {
-  /* Estas primeras tres líneas centran el elemento en cuestión, siendo el contenedor con los detalles de login */
+  /* Estas primeras tres líneas centran el elemento */
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -217,6 +219,7 @@ a.custom-card:hover {
   margin-bottom: 11.5%;
 }
 
+/* Editamos el contenido de loginSpace, que es un span vacío entre "log" e "in", y poniéndole un espacio */
 #loginSpace:after {
   content: " ";
 }
@@ -281,7 +284,7 @@ a.custom-card:hover {
   padding-right: 1rem;
 }
 
-/* Estilizamos el texto con el nombre de usuario y la opción para desloguearse */
+/* Estilizamos el texto con la opción para desloguearse */
 #logoutLabel {
   display: inline; /* Le damos display inline para que se renderize dentro de la misma linea que el nombre de usuario */
   cursor: pointer; /* Poner el cursor con un dedito, como en los demás nav-links */
@@ -309,49 +312,55 @@ a.custom-card:hover {
 }
 
 /* Media Queries */
-/* Celulares - hasta 568px */
-@media (max-width: 568px) {
+/* Celulares - hasta 320px */
+@media (max-width: 320px) {
   #loginLogo {
+    /* Centramos el logo */
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    /* Cambiamos su tamaño */
     width: 90%;
   }
 
+  /* Editamos el color de la ventana de las credenciales, haciendo que se mezcle con el fondo */
   #loginWindow {
     background-color: #F8F9FA;
   }
 
+  /* Editamos el tamaño de fuente, y le damos color y márgen abajo */
   #loginTitle {
     font-size: 2.7em;
     color: #212529;
     margin-bottom: 5%;
   }
 
+  /* Cambiamos los colores de loginL, que es la letra L de login, para que sea naranja */
   #loginL, #loginSpace {
     color: #F09100;
   }
 
-  #loginSpace {
-    content: "•"
-  }
-
+  /* Cambiamos el contenido del span loginSpace, el cual es un span vacío entre "log" e "in", y le seteamos un punto */
   #loginSpace::after {
     content: "•";
   }
 
+  /* Centramos el contenedor de las credenciales */
   #credentialsWindow {
     justify-content: center;
   }
 
+  /* Escondemos las etiquetas de "usuario" y "contraseña", ya que estarán en el placeholder de ambos input */
   .credentialLabel {
     display: none;
   }
 
+  /* Editamos el tamaño de los input */
   .credentialInput {
     flex-basis: 90%;
   }
 
+  /* Editamos los estilos de los input y sus respectivos placeholders */
   .credentialInput > input, .credentialInput > input::placeholder {
     background-color: #212529;
     width: 100%;
@@ -363,27 +372,32 @@ a.custom-card:hover {
     color: #F8F9FA;
   }
 
+  /* Al igual que fuera de la MQ, manejamos el input de contraseña por separado */
   .credentialInput > input[type="password"] {
     line-height: 3em;
     font-size: 1.2em;
   }
 
+  /* Estilizamos el botón de Ingresar */
   #loginBtn {
     width: 80%;
     max-width: 100%;
     line-height: 3em;
     margin-top: 5%;
     display: block;
+    /* Centramos el botón */
     position: relative;
     left: 50%;
     transform: translateX(-50%);
   }
 
+  /* Estilizamos el footer */
   footer.text-muted {
     font-size: 0.8em;
     text-align: center;
   }
 
+  /* Escondemos el texto de "Volver arriba" del footer */
   .float-end {
     display: none;
   }
