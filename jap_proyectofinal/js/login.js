@@ -15,6 +15,8 @@ function login() {
         showAlertSuccess();
         //Y guardamos el estado loggedIn en localStorage, el cual vamos a evaluar en index.js
         localStorage.setItem("loggedIn", "loggedIn");
+        //Guardamos nuestro nombre de usuario en otra key en localStorage
+        localStorage.setItem("username", username);
     }
 }
 
