@@ -416,6 +416,13 @@ a.custom-card:hover {
   }
 }
 
+/* Ocultar banner en index.html una vez tenemos menos de 768px de ancho de pantalla */
+@media screen and (max-width: 767px) {
+  .jumbotron {
+    display: none;
+  }
+}
+
 /* Celulares - hasta 320px */
 @media screen and (max-width: 320px) {
   #loginLogo {
