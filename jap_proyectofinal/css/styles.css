@@ -240,6 +240,7 @@ a.custom-card:hover {
   border: 0;
   width: 268px;
   margin-top: 15px;
+  padding-left: 3%;
 }
 
 /* Este código de acá selecciona todo input con type="password" dentro de la clase credentialInput, esto se hace para que los puntos del medio al escribir la contraseña no sean minúsculos, como serían sin estos dos bloques */
@@ -298,55 +299,37 @@ a.custom-card:hover {
   justify-content: right; /* Situamos el elemento a la derecha */
 }
 
-
-@media (max-width:1024px){
-
-  body{
-    background-color:#f5F5F5;
-  }
-
-/* repliqué lo que está para el formato celular para que cambie el título del login pero le modifiqué los colores para que se vea*/
-
+/* Media Queries */
+/* Tablets (en vertical) - hasta 768px */
+@media screen and (max-width: 768px) {
+  /* Editamos el tamaño de fuente y le damos márgen abajo */
   #loginTitle {
     font-size: 2.7em;
-    color: #ffffff;
     margin-bottom: 5%;
   }
 
+  /* Cambiamos los colores de loginL, que es la letra L de login, para que sea naranja */
   #loginL, #loginSpace {
     color: #F09100;
   }
 
-  #loginSpace {
-    content: "•"
-  }
-
+  /* Cambiamos el contenido del span loginSpace, el cual es un span vacío entre "log" e "in", y le seteamos un punto */
   #loginSpace::after {
     content: "•";
   }
 
-  /* elimina la etiqueta de los input*/
-  .credentialLabel{
+  /* Escondemos las etiquetas de "usuario" y "contraseña", ya que estarán en el placeholder de ambos input */
+  .credentialLabel {
     display: none;
   }
 
-  .pb-5{
-    position: relative;
-  }
-
-  /* puse que el hijo sea absoluto al padre para que todo lo que ocupe de espacio sea del padre y no de toda la página*/
-
-  #loginWindow{
-    position: absolute;
-    top: 50%;
-    left:50%;
-  /*definí top y left para marcar la posición final, son como coordenadas*/
-    transform: translate(-50%,-50%);
-  /*inmoviliza la posición definida anteriormente*/ 
-    margin: 0px auto;
-  }
-
-  img#loginLogo{
-    width: 70%;
+  /* Posicionamos la ventana de login para que */
+  #loginWindow {
+    max-width: 90%; /* Seteamos tamaño máximo del elemento, para que no se corte al tener una pantalla más chica */
+    /* Posicionamos la ventana haciendo una leve variación de lo que usamos anteriormente */
+    position: absolute; /* Posición absoluta */
+    top: 50%; /* "Coordenadas" desde arriba */
+    transform: translate(-50%, -50%); /* Reposicionamos el elemento vertical y horizontalmente (antes ya estaba posicionado, pero lo dejó de estar al pasar a position absolute) */
+    margin: 0 auto; /* Inmovilizamos al elemento */
   }
 }
