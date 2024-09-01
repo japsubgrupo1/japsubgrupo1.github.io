@@ -296,8 +296,14 @@ a.custom-card:hover {
   color: #E8101A; /* Color al que cambia el elemento al colocarle el mouse arriba */
 }
 
-/* Adicciones para la página de los productos */
+/* Adiciones a la página de productos */
 /* Posicionamos el contenedor con los productos */
+#prod-list-container {
+  margin: 0 auto; /* Centra el contenedor */
+  padding: 0 2%; /* Añade un pequeño padding relativo al ancho del contenedor */
+}
+
+/* Estilizamos la parte textual de cada producto */
 #productContainer {
   display: flex;
   flex-direction: column;
@@ -312,8 +318,48 @@ a.custom-card:hover {
 }
 
 /* Media Queries */
+/* Tablets (en vertical) - hasta 768px */
+@media screen and (max-width: 768px) {
+  /* Cambiamos color al título de la categoría */
+  #catTitle {
+    color: #F09100;
+  }
+
+  /* Página de productos */
+  /* Definimos un ancho máximo a la página de los productos en tablets */
+  #prod-list-container { 
+    max-width: 80%;
+  }
+  
+  /* Seteamos ancho nuevo para la imagen de los productos, igual al ancho total del contenedor padre */
+  #productImg {
+    width: 100%;
+  }
+  
+  /* Añadimos separación entre todos los elementos de productContainer */
+  #productContainer {
+    gap: 0.5em;
+  }
+
+  /* Seteamos la dirección de la Flexbox del texto principal de cada producto (nombre y precio), para que se muestren en columna (separen verticalmente) */
+  #productMain {
+    flex-direction: column;
+  }
+
+  /* Damos margen al los nombres y precios de cada producto */
+  #productName, #productCost {
+    margin-top: 0.2em;
+  }
+
+  /* Para el texto del producto, cambiamos su tamaño de fuente y la colocamos en negrita */
+  #productCost {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}
+
 /* Celulares - hasta 320px */
-@media (max-width: 320px) {
+@media screen and (max-width: 320px) {
   #loginLogo {
     /* Centramos el logo */
     position: relative;
@@ -400,5 +446,11 @@ a.custom-card:hover {
   /* Escondemos el texto de "Volver arriba" del footer */
   .float-end {
     display: none;
+  }
+  
+  /* Página de productos */
+  /* Definimos un ancho máximo a la página de los productos en celulares */
+  #prod-list-container {
+    max-width: 90%;
   }
 }
