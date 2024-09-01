@@ -301,124 +301,50 @@ a.custom-card:hover {
 }
 
 /* Media Queries */
-/* Celulares y tablets - hasta 768px */
+/* Tablets (en vertical) - hasta 768px */
 @media screen and (max-width: 768px) {
-  #loginLogo {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-  }
-
-  #loginWindow {
-    background-color: #F8F9FA;
-  }
-
-  #loginTitle {
-    font-size: 2.7em;
-    color: #212529;
-    margin-bottom: 5%;
-  }
-
-  #loginL, #loginSpace {
+  /* Cambiamos color al título de la categoría */
+  #catTitle {
     color: #F09100;
   }
 
-  #loginSpace {
-    content: "•"
-  }
-
-  #loginSpace::after {
-    content: "•";
-  }
-
-  #credentialsWindow {
-    justify-content: center;
-  }
-
-  .credentialLabel {
-    display: none;
-  }
-
-  .credentialInput {
-    flex-basis: 90%;
-  }
-
-  .credentialInput > input, .credentialInput > input::placeholder {
-    background-color: #212529;
-    width: 100%;
-    max-width: none;
-    line-height: 3em;
-    padding-left: 3%;
-    margin-top: 1%;
-    font-size: 1.2em;
-    color: #F8F9FA;
-  }
-
-  .credentialInput > input[type="password"] {
-    line-height: 3em;
-    font-size: 1.2em;
-  }
-
-  #loginBtn {
-    width: 80%;
-    max-width: 100%;
-    line-height: 3em;
-    margin-top: 5%;
-    display: block;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  footer.text-muted {
-    font-size: 0.8em;
-    text-align: center;
-  }
-
-  .float-end {
-    display: none;
-  }
-
-  /* Página de los productos */
-  /* Seteamos ancho nuevo para la imagen de los productos */
+  /* Página de productos */
+  /* Definimos un ancho máximo a la página de los productos en tablets */
   #prod-list-container { 
-    max-width: 80%; /* Define un ancho máximo relativo al contenedor padre */
+    max-width: 80%;
   }
   
+  /* Seteamos ancho nuevo para la imagen de los productos, igual al ancho total del contenedor padre */
   #productImg {
     width: 100%;
   }
-
-  /* Cambiamos color al título de la categoría */
-  #catTitle {
-    color:#F09100
-  }
-
-  #productName {
-    width: 100%;
-  }
-
+  
+  /* Añadimos separación entre todos los elementos de productContainer */
   #productContainer {
     gap: 0.5em;
   }
 
+  /* Seteamos la dirección de la Flexbox del texto principal de cada producto (nombre y precio), para que se muestren en columna (separen verticalmente) */
   #productMain {
     flex-direction: column;
   }
 
+  /* Damos margen al los nombres y precios de cada producto */
   #productName, #productCost {
     margin-top: 0.2em;
   }
 
+  /* Para el texto del producto, cambiamos su tamaño de fuente y la colocamos en negrita */
   #productCost {
     font-size: 1rem;
     font-weight: bold;
   }
 }
 
-/* Celulares y tablets - hasta 768px */
+/* Celulares - hasta 320px */
 @media screen and (max-width: 320px) {
+  /* Página de productos */
+  /* Definimos un ancho máximo a la página de los productos en celulares */
   #prod-list-container {
     max-width: 90%;
   }
