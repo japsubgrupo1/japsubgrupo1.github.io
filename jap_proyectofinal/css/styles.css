@@ -483,6 +483,11 @@ a.custom-card:hover {
     left: 50%;
     transform: translateX(-50%);
   }
+
+  /* Ajustamos tamaño de las alertas */
+  #alertLoginOK, #alertLoginFAIL {
+    width: 90%;
+  }
   
   /* Página de productos */
   /* Definimos un ancho máximo a la página de los productos en celulares */
