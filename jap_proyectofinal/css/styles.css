@@ -211,6 +211,8 @@ a.custom-card:hover {
   border-radius: 10px;
   font-family: 'Inria Sans', Arial, sans-serif;
   color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 #loginTitle {
@@ -251,6 +253,7 @@ a.custom-card:hover {
   width: 90%;
   max-width: 270px;
   margin-top: 5%;
+  padding-left: 3%;
 }
 
 /* Este código de acá selecciona todo input con type="password" dentro de la clase credentialInput, esto se hace para que los puntos del medio al escribir la contraseña no sean minúsculos, como serían sin estos dos bloques */
@@ -320,12 +323,67 @@ a.custom-card:hover {
 /* Media Queries */
 /* Tablets (en vertical) - hasta 768px */
 @media screen and (max-width: 768px) {
+  /* Centramos la ventana de login */
+  #loginLogo {
+    margin: 0 auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #loginWindow {
+    width: 90%; /* Esto hará que la ventana no se vaya de la pantalla al estar en una pantalla más chica */
+    /* Posicionamos la ventana haciendo una leve variación de lo que usamos anteriormente */
+    position: absolute; /* Posición absoluta */
+    top: 50%; /* "Coordenadas" desde arriba */
+    transform: translate(-50%, -50%); /* Reposicionamos el elemento vertical y horizontalmente (antes ya estaba posicionado, pero lo dejó de estar al pasar a position absolute) */
+    margin: 0 auto; /* Inmovilizamos al elemento */
+  }
+
+  /* Editamos el tamaño del título y le damos márgen abajo */
+  #loginTitle {
+    font-size: 2.7em;
+    margin-bottom: 5%;
+  }
+
+  /* Cambiamos los colores de loginL, que es la letra L de login, para que sea naranja */
+  #loginL, #loginSpace {
+    color: #F09100;
+  }
+
+  /* Cambiamos el contenido del span loginSpace, el cual es un span vacío entre "log" e "in", y le seteamos un punto */
+  #loginSpace::after {
+    content: "•";
+  }
+
+  /* Escondemos las etiquetas de "usuario" y "contraseña", ya que estarán en el placeholder de ambos input - también escondemos el texto de "volver arriba" del footer */
+  .credentialLabel, .float-end {
+    display: none;
+  }
+
+  /* Centramos todos los elementos */
+  #credentialsWindow {
+    justify-content: center;
+  }
+
+  /* Damos a cada textbox el ancho total de su contenedor padre */
+  .credentialInput > input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Estilizamos el footer */
+  footer.text-muted {
+    font-size: 0.8em;
+    text-align: center;
+  }
+
+  /* Página de productos */
   /* Cambiamos color al título de la categoría */
   #catTitle {
     color: #F09100;
   }
 
-  /* Página de productos */
   /* Definimos un ancho máximo a la página de los productos en tablets */
   #prod-list-container { 
     max-width: 80%;
@@ -361,44 +419,26 @@ a.custom-card:hover {
 /* Celulares - hasta 320px */
 @media screen and (max-width: 320px) {
   #loginLogo {
-    /* Centramos el logo */
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    /* Cambiamos su tamaño */
+    /* Cambiamos el tamaño del logo */
     width: 90%;
   }
 
   /* Editamos el color de la ventana de las credenciales, haciendo que se mezcle con el fondo */
   #loginWindow {
+    position: relative;
+    transform: translateX(-50%);
     background-color: #F8F9FA;
+    width: 100%; /* Hacemos que el elemento tome todo el ancho de la pantalla */
   }
 
-  /* Editamos el tamaño de fuente, y le damos color y márgen abajo */
+  /* Editamos el color del título */
   #loginTitle {
-    font-size: 2.7em;
     color: #212529;
-    margin-bottom: 5%;
-  }
-
-  /* Cambiamos los colores de loginL, que es la letra L de login, para que sea naranja */
-  #loginL, #loginSpace {
-    color: #F09100;
-  }
-
-  /* Cambiamos el contenido del span loginSpace, el cual es un span vacío entre "log" e "in", y le seteamos un punto */
-  #loginSpace::after {
-    content: "•";
   }
 
   /* Centramos el contenedor de las credenciales */
   #credentialsWindow {
     justify-content: center;
-  }
-
-  /* Escondemos las etiquetas de "usuario" y "contraseña", ya que estarán en el placeholder de ambos input */
-  .credentialLabel {
-    display: none;
   }
 
   /* Editamos el tamaño de los input */
@@ -435,17 +475,6 @@ a.custom-card:hover {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-  }
-
-  /* Estilizamos el footer */
-  footer.text-muted {
-    font-size: 0.8em;
-    text-align: center;
-  }
-
-  /* Escondemos el texto de "Volver arriba" del footer */
-  .float-end {
-    display: none;
   }
   
   /* Página de productos */
