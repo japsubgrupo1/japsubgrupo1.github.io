@@ -1,26 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ernesto Argenzio | Web Developer</title>
-    <link rel="stylesheet" href="style.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <!-- Importamos Google Fonts: "Inria Sans" y "Raleway" (la última ya importada) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 </head>
+
 <body>
-    <h1><span id="title">Ernesto Argenzio</span></h1>
-    <img id="pfp1" src="pfp1.jpg">
-    <img id="pfp2" src="pfp2.jpg">
-    <ul class="menu">
-        <li><a href="">Inicio</a> ●</li>
-        <li><a href="https://www.linkedin.com/in/ernestoargenzio">LinkedIn</a> ●</li>
-        <li><a href="mailto:ernemogilevich@gmail.com" title="Email: ernemogilevich@gmail.com">Contacto</a></li>
-    </ul>
-    <p class="p1">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae dui sit amet dui vestibulum hendrerit. Fusce odio elit, cursus sed ipsum in, suscipit placerat urna. Vivamus suscipit mauris facilisis volutpat imperdiet. Integer aliquet hendrerit fringilla. Donec elementum eros lectus, quis imperdiet leo venenatis ac. Quisque interdum nulla quam, et pharetra neque finibus ac. Aenean dictum dui velit, ac efficitur nunc porta nec. Aliquam tincidunt elit et orci iaculis commodo. Aliquam tincidunt suscipit lorem, in pellentesque ligula ultrices at. In volutpat arcu ut metus commodo ornare.
-    </p>
-    <p class="p2">
-        Integer at nulla vehicula, auctor nibh ut, porta nisi. Nam a tempor est, vel fermentum lacus. Sed quam augue, sagittis in turpis nec, consequat accumsan risus. Integer feugiat dignissim laoreet. Nullam cursus mollis rhoncus. Pellentesque in purus elit. Vivamus nulla nunc, fringilla eu metus sed, mollis elementum risus. Ut lobortis elementum turpis, vel lacinia massa iaculis rutrum. Cras suscipit, enim sed pulvinar fringilla, dui diam dictum erat, sit amet placerat sapien odio id ante. Ut a nisi vel lacus malesuada hendrerit. Aliquam erat volutpat. Nulla ex est, malesuada vitae iaculis sed, condimentum nec urna.
-    </p>
-    <p id="copyright">&copy; 2024 Ernesto Argenzio</p>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item"> <!-- Agregamos elemento que utilizaremos para popular el nombre de usuario y opción para desconectarse -->
+            <a class="nav-link" id="userLogout"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div class="jumbotron text-center"></div>
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm custom-card cursor-active" id="autos">
+              <img class="bd-placeholder-img card-img-top" src="img/cars_index.jpg"
+                alt="Imgagen representativa de la categoría 'Autos'">
+              <h3 class="m-3">Autos</h3>
+              <div class="card-body">
+                <p class="card-text">Los mejores precios en autos 0 kilómetro, de alta y media gama.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm custom-card cursor-active" id="juguetes">
+              <img class="bd-placeholder-img card-img-top" src="img/toys_index.jpg"
+                alt="Imgagen representativa de la categoría 'Juguetes'">
+              <h3 class="m-3">Juguetes</h3>
+              <div class="card-body">
+                <p class="card-text">Encuentra aquí los mejores precios para niños/as de cualquier edad.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm custom-card cursor-active" id="muebles">
+              <img class="bd-placeholder-img card-img-top" src="img/furniture_index.jpg"
+                alt="Imgagen representativa de la categoría 'Muebles'">
+              <h3 class="m-3">Muebles</h3>
+              <div class="card-body">
+                <p class="card-text">Muebles antiguos, nuevos y para ser armados por uno mismo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <a class="btn btn-light btn-lg btn-block" href="categories.html">Y mucho más!</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+    </div>
+  </footer>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/init.js"></script>
 </body>
 </html>
