@@ -14,10 +14,10 @@ function showProductList() {
 
         //Editamos variable htmlContentToAppend para que se construya la página con la estructura deseada
         htmlContentToAppend += `
-            <div onclick="redirectToProductInfo()" class="list-group-item list-group-item-action cursor-active">
+            <div onclick="setProdID(${product.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3" id="productImg">
-                        <img src="setProdID(${product.id})" alt="${product.name}" class="img-thumbnail">
+                        <img src="${product.image}" alt="${product.name}" class="img-thumbnail">
                     </div>
                     <div class="col" id="productContainer">
                         <div class="d-flex w-100 justify-content-between" id="productMain">
