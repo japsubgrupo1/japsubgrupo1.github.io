@@ -17,7 +17,7 @@ function showProductList() {
             <div onclick="redirectToProductInfo()" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3" id="productImg">
-                        <img src="${product.image}" alt="${product.name}" class="img-thumbnail">
+                        <img src="setProdID(${product.id})" alt="${product.name}" class="img-thumbnail">
                     </div>
                     <div class="col" id="productContainer">
                         <div class="d-flex w-100 justify-content-between" id="productMain">
@@ -36,8 +36,9 @@ function showProductList() {
     document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
 }
 
-//Defimos función para ejecutar al clickearse el div de cada producto (atributo onclick en línea 17)
-function redirectToProductInfo() {
+//Defimos función para guardar el producto al clickearlo
+function setProdID(id) {
+    localStorage.setItem("prodID", id); //Guardamos el ID del producto clickeado en la key prodID en localStorage
     window.location.href = "product-info.html"; //Redirigimos a product-info.html
 }
 
