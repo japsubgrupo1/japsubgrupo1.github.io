@@ -4,13 +4,13 @@ let catTitle = document.getElementById("catTitle"); //Obtenemos el h2 con el fut
 let catDescription = document.getElementById("catDescription"); //Obtenemos el p con la futura descripción de la categoría
 
 //Función para mostrar los productos
-function showProductList() {
+function showProductList(filteredArray = productArray) {
     //Definimos variable vacía para luego pasar al HTML
     let htmlContentToAppend = "";
     //For que recorre incrementalmente el array productArray, al cual se le pasa contenido en a línea 45
-    for (let i = 0; i < productArray.length; i++) {
+    for (let i = 0; i < filteredArray.length; i++) {
         //Definimos variable product, la cual va a equivaler al elemento que el for está evaluando
-        let product = productArray[i];
+        let product = filteredArray[i];
 
         //Editamos variable htmlContentToAppend para que se construya la página con la estructura deseada
         htmlContentToAppend += `
@@ -35,6 +35,23 @@ function showProductList() {
     //Finalmente, le pasamos el contenido de htmlContentToAppend al HTML (reemplazando el HTML interno de el div de id prod-list-container, el cual originalmente está vacío)
     document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
 }
+//Función para filtrar los productos en tiempo real
+function filtroProducts() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+
+    const filteredProducts = productArray.filter(product => {
+        return product.name.toLowerCase().includes(searchInput) || 
+               product.description.toLowerCase().includes(searchInput);
+    });
+
+    // Mostrar los productos filtrados en la pantalla
+    showProductList(filteredProducts);
+}
+
+//Escuchar el input en tiempo real
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('searchInput').addEventListener('input', filtroProducts);
+});
 
 //Defimos función para guardar el producto al clickearlo
 function setProdID(id) {
@@ -72,5 +89,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
         } else { //Acción cuando la promesa no da "ok"
             console.error(`Error durante el fetch a ${categoryUrl}, puede que el recurso no esté disponible.`); //Loggear error en consola
         }
-    });    
+    });   
 });
