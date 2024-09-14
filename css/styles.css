@@ -436,7 +436,8 @@ a.custom-card:hover {
     font-weight: bold;
   }
 
-  #filterContainer{
+  /* Ajustamos el contenedor de los filtros para que matchee con el resto del contenido de la página */
+  #filterContainer {
     max-width: 78%;
   }
 }
