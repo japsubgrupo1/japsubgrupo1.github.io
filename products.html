@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
   <!-- Importamos Google Fonts: "Inria Sans" y "Raleway" (la última ya importada) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900" rel="stylesheet">
- <!-- También hacemos uso de Google Icons-->
- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900" rel="stylesheet">
+  <!-- También hacemos uso de Google Icons-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -45,55 +45,53 @@
       <h2 id="catTitle"></h2> <!-- Agregamos h2 de id "catTitle", el cual vamos a modificar con JS para que aquí se coloque el nombre de la categoría -->
       <p class="lead" id="catDescription"></p> <!-- Agregamos p de id "catDesciption", el cual vamos a modificar con JS para que aquí se coloque la descripción de la categoría -->
     </div>
-
-    <!--botones de filtrado-->
+    <!-- Botones y secciones de filtrado -->
     <div class="container" id="filterContainer">
       <div class="text-center d-grid d-flex justify-content-end" >
-          <!--botón de precio-->
-                <div class="precio" id="priceUp">
-                  <button class="btn btn-outline-secondary d-inline-flex align-items-center" type="button" id="buttonFilter">
-                    <span class="material-symbols-outlined">attach_money</span>
-                    <span class="material-symbols-outlined">arrow_upward</span>
-                    <svg class="bi ms-1" width="20" height="20"><use xlink:href="#arrow-right-short"></use></svg>
-                  </button>
-                </div>
-                <div class="precio" id="priceDown">
-                    <button class="btn btn-outline-secondary d-inline-flex align-items-center" type="button" id="buttonFilter">
-                      <span class="material-symbols-outlined">attach_money</span>
-                      <span class="material-symbols-outlined">arrow_downward</span>
-                    </button>
-                </div>
-          <!--botón de relevancia -->
-              <div class="relevance" id="lowRelevance">
-                <button class="btn btn-outline-secondary d-inline-flex align-items-center" type="button" id="buttonFilter">
-                  <span class="material-symbols-outlined">arrow_upward</span>
-                  <p>Rel.</p>
-                </button>
-              </div>
-              <div class="relevance" id="highRelevance">
-                <button class="btn btn-outline-secondary d-inline-flex align-items-center" type="button" id="buttonFilter">
-                <span class="material-symbols-outlined">arrow_downward</span>
-                <p>Rel.</p>
-                </button>
-              </div>
-      </div>
-      <!--búsqueda por precio-->
-      <div class="container text-center">
-        <div class="row align-items-center d-flex justify-content-end btn-toolbar " id="priceFilter">
-            <div class="col-xxl-3 col-sm-12 input-group mb-3" id="inputGroup">
-              <span class="input-group-text" id="spanPrice">$</span>
-              <input type="number" class="form-control" id="minPrice" placeholder="Precio mín.">
-              <input type="number" class="form-control" id="maxPrice" placeholder="Precio máx.">
-            </div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3" id="buttonGroup">
-              <button class="btn btn-outline-secondary align-items-center" type="button" id="filterButton"> Filtrar </button>
-              <button class="btn btn-outline-secondary align-items-center" type="button" id="cleanButton">Limpiar</button>
-           </div>
+        <!-- Filtrado por precio -->
+        <div class="precio" id="priceUp">
+          <button class="btn btn-outline-secondary d-inline-flex align-items-center" type="button" id="buttonFilter">
+            <span class="material-symbols-outlined">attach_money</span>
+            <span class="material-symbols-outlined">arrow_upward</span>
+            <svg class="bi ms-1" width="20" height="20"><use xlink:href="#arrow-right-short"></use></svg>
+          </button>
+        </div>
+        <div class="precio" id="priceDown">
+          <button class="btn btn-outline-secondary d-inline-flex align-items-center" type="button" id="buttonFilter">
+            <span class="material-symbols-outlined">attach_money</span>
+            <span class="material-symbols-outlined">arrow_downward</span>
+          </button>
+        </div>
+        <!-- Filtrado por relevancia -->
+        <div class="relevance" id="lowRelevance">
+          <button class="btn btn-outline-secondary d-inline-flex align-items-center" type="button" id="buttonFilter">
+            <span class="material-symbols-outlined">arrow_upward</span>
+            <p>Rel.</p>
+          </button>
+        </div>
+        <div class="relevance" id="highRelevance">
+          <button class="btn btn-outline-secondary d-inline-flex align-items-center" type="button" id="buttonFilter">
+            <span class="material-symbols-outlined">arrow_downward</span>
+            <p>Rel.</p>
+          </button>
         </div>
       </div>
-    </div>
-    
-    <!--contenedor de los productos-->
+      <!-- Búsqueda por precio -->
+      <div class="container text-center">
+        <div class="row align-items-center d-flex justify-content-end btn-toolbar " id="priceFilter">
+          <div class="col-xxl-3 col-sm-12 input-group mb-3" id="inputGroup">
+            <span class="input-group-text" id="spanPrice">$</span>
+            <input type="number" class="form-control" id="minPrice" placeholder="Precio mín.">
+            <input type="number" class="form-control" id="maxPrice" placeholder="Precio máx.">
+          </div>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3" id="buttonGroup">
+            <button class="btn btn-outline-secondary align-items-center" type="button" id="filterButton"> Filtrar </button>
+            <button class="btn btn-outline-secondary align-items-center" type="button" id="cleanButton">Limpiar</button>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <!-- Contenedor de productos -->
     <div class="container">
       <div class="row">
         <div class="list-group" id="prod-list-container"> <!-- Agregamos div que a futuro contendrá los productos, traídos de un JSON -->
