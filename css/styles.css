@@ -341,6 +341,133 @@ a.custom-card:hover {
   justify-content: right; /* Situamos el elemento a la derecha */
 }
 
+/* product-info */
+/* Estilizamos el contenedor de la información de cada producto */
+#prod-info-container {
+  gap: 1%; /* Espaciado entre productos */
+  justify-content: space-between; /* Acomodamos los elementos dentro de la Flexbox */
+  margin-top: 10%; /* Añadimos márgen arriba */
+}
+
+/* Contenedor con las otras imágenes del producto */
+#prodImagesDiv {
+  position: relative;
+  flex: 0 1 10%; /* Espaciado dentro del Flexbox */
+  border: 1px solid #D9D9D9;
+  padding: 0.5%;
+  border-radius: 10px;
+  height: 100%;
+  overflow-y: auto; /* Caso en el que las imágenes extiendan el tamaño del div */
+}
+
+/* Imágenes relacionadas del producto */
+#prodImagesDiv > img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 5%;
+  object-fit: cover; /* Ajustamos la imagen */
+  aspect-ratio: 1 / 1; /* Hacemos que la imagen se muestre cuadrada con un aspecto 1:1 */
+  cursor: pointer;
+}
+
+/* Quitamos el márgen en la última imagen */
+#prodImagesDiv > img:last-child {
+  margin-bottom: 0;
+}
+
+/* Contenedor de la imagen principal */
+#prodImageMainDiv {
+  flex: 1 1 40%;
+  position: relative;
+}
+
+/* Imagen principal */
+#prodImageMain {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #D9D9D9;
+  transition: transform .2s; /* Animación al hacer zoom */
+}
+
+/* Contenedor con la información del producto */
+#productInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 3 1 50%;
+  margin-left: 1%;
+  font-family: 'Inria Sans', Arial, sans-serif;
+}
+
+/* Título del producto */
+#productInfoName {
+  font-weight: bold;
+  margin-top: 2%;
+}
+
+/* Costo del producto */
+#productInfoCost {
+  font-size: 2em;
+}
+
+/* Descripción del producto */
+#productInfoDesc {
+  width: 70%;
+}
+
+/* Texto de "Artículos recomendados */
+#productInfo > p {
+  color: #F09100;
+  font-weight: bold;
+  margin: 2% 0 1%;
+}
+
+/* Contenedor padre de los productos relacionados */
+#relatedProducts {
+  display: inline-block;
+  margin-left: 2.5%;
+}
+
+/* Contenedor con los productos relacionados */
+.relatedImages {
+  display: inline-flex;
+  border: 1px solid #D9D9D9;
+  border-radius: 10px;
+  padding: 0.5%;
+  overflow: hidden;
+  gap: 1%;
+}
+
+/* Imágenes de productos relacionados */
+.relatedImages > img {
+  display: block;
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-right: 0.1vw;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+
+/* Botón para cerrar la imagen */
+#imgBtn {
+  position: absolute;
+  top: 4%;
+  left: 4%;
+  transform: scale(1.5);
+  opacity: 1;
+  display: none;
+  background-color: rgba(190, 49, 49, 0.288);
+  transition: background-color .25s;
+}
+
+/* Animación al tener el mouse sobre el botón de arriba */
+#imgBtn:hover {
+  background-color: rgba(190, 49, 49, 0.664);
+}
+
 /* Media Queries */
 /* Tablets (en vertical) - hasta 768px */
 @media screen and (max-width: 768px) {
@@ -435,6 +562,82 @@ a.custom-card:hover {
     font-size: 1rem;
     font-weight: bold;
   }
+
+  /* Estilizamos el contenedor de la información de cada producto */
+  #prod-info-container {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 5%;
+  }
+
+  /* product-info */
+  /* Contenedor de la imagen principal */
+  #prodImageMainDiv {
+    order: 0;
+    width: 100%;
+    flex: 1;
+  }
+
+  /* Imagen principal */
+  #prodImageMain {
+    height: auto;
+  }
+
+  /* Contenedor con las demás imágenes del producto */
+  #prodImagesDiv {
+    order: 1;
+    display: flex;
+    gap: 1%;
+  }
+
+  /* Otras imágenes del producto */
+  #prodImagesDiv > img {
+    height: 100%;
+    width: 20%;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  /* Información del producto */
+  #productInfo {
+    order: 2;
+  }
+
+  /* Texto con categoría y cantidad de vendidos */
+  #productInfo .text-muted {
+    text-align: right;
+    order: 1;
+    margin-right: 1%;
+  }
+
+  /* Descripción del artículo */
+  #productInfoDesc {
+    width: 100%;
+    text-align: justify;
+  }
+
+  /* Texto de Artículos recomendados */
+  #productInfo > p {
+    order: 2;
+  }
+
+  /* Contenedor con los productos relacionados */
+  #relatedProducts {
+    order: 3;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Contenedor con las imágenes de los productos relacionados */
+  .relatedImages {
+    display: flex;
+  }
+
+  /* Imágenes de los productos relacionados */
+  .relatedImages > img {
+    flex-grow: 1;
+    max-width: 100%;
 
   /* Ajustamos el contenedor de los filtros para que matchee con el resto del contenido de la página */
   #filterContainer {
