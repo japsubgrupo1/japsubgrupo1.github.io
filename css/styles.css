@@ -320,6 +320,117 @@ a.custom-card:hover {
   justify-content: right; /* Situamos el elemento a la derecha */
 }
 
+/* product-info.html */
+#prod-info-container {
+  gap: 1%;
+  justify-content: space-between;
+  margin-top: 10%;
+}
+
+#prodImagesDiv {
+  position: relative;
+  flex: 0 1 10%;
+  border: 1px solid #D9D9D9;
+  padding: 0.5%;
+  border-radius: 10px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+#prodImageMainDiv {
+  flex: 1 1 40%;
+  position: relative;
+}
+
+#productInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 3 1 50%;
+  margin-left: 1%;
+  font-family: 'Inria Sans', Arial, sans-serif;
+}
+
+#productInfoName {
+  font-weight: bold;
+  margin-top: 2%;
+}
+
+#productInfoCost {
+  font-size: 2em;
+}
+
+#productInfoDesc {
+  width: 70%;
+}
+
+#productInfo > p {
+  color: #F09100;
+  font-weight: bold;
+  margin: 2% 0 1%;
+}
+
+#prodImagesDiv > img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 5%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+
+#prodImagesDiv > img:last-child {
+  margin-bottom: 0;
+}
+
+#prodImageMain {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #D9D9D9;
+  transition: transform .2s;
+}
+
+#relatedProducts {
+  display: inline-block;
+  margin-left: 2.5%;
+}
+
+.relatedImages {
+  display: inline-flex;
+  border: 1px solid #D9D9D9;
+  border-radius: 10px;
+  padding: 0.5%;
+  overflow: hidden;
+  gap: 1%;
+}
+
+.relatedImages > img {
+  display: block;
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-right: 0.1vw;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+
+#imgBtn {
+  position: absolute;
+  top: 4%;
+  left: 4%;
+  transform: scale(1.5);
+  opacity: 1;
+  display: none;
+  background-color: rgba(190, 49, 49, 0.288);
+  transition: background-color .25s;
+}
+
+#imgBtn:hover {
+  background-color: rgba(190, 49, 49, 0.664);
+}
+
 /* Media Queries */
 /* Tablets (en vertical) - hasta 768px */
 @media screen and (max-width: 768px) {
@@ -414,6 +525,75 @@ a.custom-card:hover {
     font-size: 1rem;
     font-weight: bold;
   }
+
+  /* product-info */
+  #productInfoDiv {
+    max-width: 80%;
+  }
+
+  #prod-info-container {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 5%;
+  }
+
+  #prodImageMainDiv {
+    order: 0;
+    width: 100%;
+    flex: 1;
+  }
+
+  #prodImageMain {
+    height: auto;
+  }
+
+  #prodImagesDiv {
+    order: 1;
+    display: flex;
+    gap: 1%;
+  }
+
+  #prodImagesDiv > img {
+    height: 100%;
+    width: 20%;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  #productInfo {
+    order: 2;
+  }
+
+  #productInfo .text-muted {
+    text-align: right;
+    order: 1;
+    margin-right: 1%;
+  }
+
+  #productInfoDesc {
+    width: 100%;
+    text-align: justify;
+  }
+
+  #productInfo > p {
+    order: 2;
+  }
+
+  #relatedProducts {
+    order: 3;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .relatedImages {
+    display: flex;
+  }
+
+  .relatedImages > img {
+    flex-grow: 1;
+    max-width: 100%;
+  }
 }
 
 /* Ocultar banner en index.html una vez tenemos menos de 768px de ancho de pantalla */
@@ -493,5 +673,10 @@ a.custom-card:hover {
   /* Definimos un ancho máximo a la página de los productos en celulares */
   #prod-list-container {
     max-width: 90%;
+  }
+
+  /* product-info */
+  #productInfoDiv {
+    max-width: 100%;
   }
 }
