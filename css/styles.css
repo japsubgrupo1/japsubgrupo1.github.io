@@ -230,6 +230,27 @@ a.custom-card:hover {
   display: flex; /* Utilizamos flexbox para mejor colocación de los contenedores */
 }
 
+/* Estilos para los botones de filtrado */
+#buttonFilter {
+  max-width: 4rem;
+  max-height: 2rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+#buttonFilter > * {
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  max-width: 80%;  /* Asegura que el contenido no se expanda más allá del botón */
+  max-height: 80%; /* Asegura que el contenido no se expanda más allá del botón */
+  flex-shrink: 0;  /* Evita que los elementos se reduzcan de tamaño */
+  margin: 0;
+}
+
 .credentialLabel, .credentialInput {
   flex-basis: 30%; /* Utilizamos flex-basis para indicar qué porcentaje del contenedor padre queremos que tome este elemento */
   text-align: right;
@@ -414,6 +435,11 @@ a.custom-card:hover {
     font-size: 1rem;
     font-weight: bold;
   }
+
+  /* Ajustamos el contenedor de los filtros para que matchee con el resto del contenido de la página */
+  #filterContainer {
+    max-width: 78%;
+  }
 }
 
 /* Ocultar banner en index.html una vez tenemos menos de 768px de ancho de pantalla */
@@ -493,5 +519,20 @@ a.custom-card:hover {
   /* Definimos un ancho máximo a la página de los productos en celulares */
   #prod-list-container {
     max-width: 90%;
+  }
+
+  /* Ocultamos botón de pesos en el filtro por precio */
+  #spanPrice {
+    display: none;
+  }
+
+  /* Ajustamos los botones contra la derecha */
+  #buttonGroup > button {
+    justify-content: end;
+  }
+
+  /* Quitamos ancho máximo del contenedor de los filtros */
+  #filterContainer {
+    max-width: none;
   }
 }
