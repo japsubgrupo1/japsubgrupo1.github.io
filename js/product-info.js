@@ -54,6 +54,7 @@ function zoom() {
         prodImageMain.style.border = "0"; //Eliminamos el borde
         prodImageMain.style.height = "auto"; //Mostramos el alto total de la imágen
         prodImageMain.style.margin = "16% 0 0 25%"; //Movemos la imagen
+        prodImageMain.style.cursor = "auto"; //Seteamos el cursor denuevo en auto
         imgBtn.style.display = "block"; //Mostramos el botón de cerrado
     }
 }
@@ -65,6 +66,7 @@ function unzoom() {
     prodImageMain.style.border = "border: 1px solid #D9D9D9";
     prodImageMain.style.height = "100%";
     prodImageMain.style.margin = "0";
+    prodImageMain.style.cursor = "pointer";
     imgBtn.style.display = "none";
 }
 
