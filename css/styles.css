@@ -230,27 +230,6 @@ a.custom-card:hover {
   display: flex; /* Utilizamos flexbox para mejor colocación de los contenedores */
 }
 
-/* Estilos para los botones de filtrado */
-#buttonFilter {
-  max-width: 4rem;
-  max-height: 2rem;
-  margin-right: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1em;
-}
-
-#buttonFilter > * {
-  align-items: center;
-  text-align: center;
-  flex: 1;
-  max-width: 80%;  /* Asegura que el contenido no se expanda más allá del botón */
-  max-height: 80%; /* Asegura que el contenido no se expanda más allá del botón */
-  flex-shrink: 0;  /* Evita que los elementos se reduzcan de tamaño */
-  margin: 0;
-}
-
 .credentialLabel, .credentialInput {
   flex-basis: 30%; /* Utilizamos flex-basis para indicar qué porcentaje del contenedor padre queremos que tome este elemento */
   text-align: right;
@@ -389,6 +368,7 @@ a.custom-card:hover {
   border-radius: 10px;
   border: 1px solid #D9D9D9;
   transition: transform .2s; /* Animación al hacer zoom */
+  cursor: pointer;
 }
 
 /* Contenedor con la información del producto */
@@ -466,6 +446,27 @@ a.custom-card:hover {
 /* Animación al tener el mouse sobre el botón de arriba */
 #imgBtn:hover {
   background-color: rgba(190, 49, 49, 0.664);
+}
+
+/* Estilos para los botones de filtrado */
+#buttonFilter {
+  max-width: 4rem;
+  max-height: 2rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+#buttonFilter > * {
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  max-width: 80%;  /* Asegura que el contenido no se expanda más allá del botón */
+  max-height: 80%; /* Asegura que el contenido no se expanda más allá del botón */
+  flex-shrink: 0;  /* Evita que los elementos se reduzcan de tamaño */
+  margin: 0;
 }
 
 /* Media Queries */
@@ -581,6 +582,7 @@ a.custom-card:hover {
   /* Imagen principal */
   #prodImageMain {
     height: auto;
+    cursor: auto;
   }
 
   /* Contenedor con las demás imágenes del producto */
@@ -638,6 +640,7 @@ a.custom-card:hover {
   .relatedImages > img {
     flex-grow: 1;
     max-width: 100%;
+  }
 
   /* Ajustamos el contenedor de los filtros para que matchee con el resto del contenido de la página */
   #filterContainer {
