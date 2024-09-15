@@ -1,16 +1,16 @@
-//Definimos array con los productos, originalmente vacía
-let productArray = [];
+//Definimos array con los productos y otra para filtrarlos, originalmente vacías
+let productArray, filteredArray = [];
 let catTitle = document.getElementById("catTitle"); //Obtenemos el h2 con el futuro título de la categoría
 let catDescription = document.getElementById("catDescription"); //Obtenemos el p con la futura descripción de la categoría
 
-//Función para mostrar los productos
-function showProductList(filteredArray = productArray) {
+//Función para mostrar los productos, modificando showProductList que pueda filtrar en base a un parámetro adicional
+function showProductList(filteredArr = filteredArray) {
     //Definimos variable vacía para luego pasar al HTML
     let htmlContentToAppend = "";
     //For que recorre incrementalmente el array productArray, al cual se le pasa contenido en a línea 45
-    for (let i = 0; i < filteredArray.length; i++) {
+    for (let i = 0; i < filteredArr.length; i++) {
         //Definimos variable product, la cual va a equivaler al elemento que el for está evaluando
-        let product = filteredArray[i];
+        let product = filteredArr[i];
 
         //Editamos variable htmlContentToAppend para que se construya la página con la estructura deseada
         htmlContentToAppend += `
@@ -36,6 +36,21 @@ function showProductList(filteredArray = productArray) {
     document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
 }
 
+//Funciones para extraer y convertir valores a filtrar
+//Precio
+function getProductPrice(element) {
+    //Seleccionamos el elemento con el ID productCost dentro del documento, usandy querySelector
+    //Obtenemos el texto del elemento con textContent
+    //Utilizamos replace (expresión regular - patrón de búsqueda) para eliminar cualquier caracter que no sea numérico, dejando disponible sólo el número para hacer la comparación
+    //Convertimos la cadena de texto (string) a número flotante (decimal) para poder hacer la comparación
+    return parseFloat(element.querySelector("#productCost").textContent.replace(/[^0-9.-]/g, ""));
+}
+
+//Relevancia
+function getProductSoldCount(element) {
+    return parseInt(element.querySelector("#soldCounter").textContent.replace(/\D/g, ""), 10);
+} 
+
 //Defimos función para guardar el producto al clickearlo
 function setProdID(id) {
     localStorage.setItem("prodID", id); //Guardamos el ID del producto clickeado en la key prodID en localStorage
@@ -55,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (resultObj.status === "ok") { //Acción cuando la promesa da "ok"
             catTitle.textContent = resultObj.data.catName; //Modificamos el texto de catTitle para añadir el nombre de la categoría
             productArray = resultObj.data.products; //productArray toma todos los elementos del array de objetos "products", encontrado en la data de la respuesta de la promesa
+            filteredArray = [...productArray]; //Creamos copia de productArray para filtrar sin perder el array original
             showProductList(); //Mostrar elementos en pantalla
         } else { //Acción cuando la promesa no da "ok"
             console.error(`Error durante el fetch a ${categoryUrl}, puede que el recurso no esté disponible.`); //Loggear error en consola
@@ -72,8 +88,75 @@ document.addEventListener("DOMContentLoaded", function (e) {
         } else { //Acción cuando la promesa no da "ok"
             console.error(`Error durante el fetch a ${categoryUrl}, puede que el recurso no esté disponible.`); //Loggear error en consola
         }
+    });   
+
+    //Funcionalidad de los botones de orden y filtrdo
+    //Ordenar los elementos comparando el número de ventas de los productos
+    filteredArray.sort((a, b) => b.soldCount - a.soldCount); //Mayor relevancia
+
+    //Mostrar botones de de "menor relevancia" y "menor precio"
+    //style.display para que solo algunos botones estén visibles al inicio (mayor relevancia y menor precio), los demás se ocultan y se mostrarán al apretar cada botón
+    document.getElementById("lowRelevance").style.display = "none";
+    document.getElementById("priceUp").style.display = "inline";
+    document.getElementById("highRelevance").style.display = "inline";
+    document.getElementById("priceDown").style.display = "none";
+
+    //Botón para filtrar por mayor relevancia
+    document.getElementById("highRelevance").addEventListener("click", function () {
+        filteredArray.sort((a, b) => b.soldCount - a.soldCount); //Mayor relevancia
+        showProductList();
+
+        //Alternar la visibilidad de los botones
+        document.getElementById("highRelevance").style.display = "none";
+        document.getElementById("lowRelevance").style.display = "inline";
     });
 
+    //Botón para filtrar por menor relevancia
+    document.getElementById("lowRelevance").addEventListener("click", function () {
+        filteredArray.sort((a, b) => a.soldCount - b.soldCount); //Menor relevancia
+        showProductList();
+
+        //Alternar la visibilidad de los botones
+        document.getElementById("lowRelevance").style.display = "none";
+        document.getElementById("highRelevance").style.display = "inline";
+    });
+
+    //Botón para filtrar por menor precio
+    document.getElementById("priceUp").addEventListener("click", function () {
+        filteredArray.sort((a, b) => a.cost - b.cost); //Menor precio
+        showProductList();
+
+        //Alternar la visibilidad de los botones
+        document.getElementById("priceUp").style.display = "none";
+        document.getElementById("priceDown").style.display = "inline";
+    });
+
+    //Botón para filtrar por mayor precio
+    document.getElementById("priceDown").addEventListener("click", function () {
+        filteredArray.sort((a, b) => b.cost - a.cost); //Mayor precio
+        showProductList();
+
+        // Alternar la visibilidad de los botones
+        document.getElementById("priceDown").style.display = "none";
+        document.getElementById("priceUp").style.display = "inline";
+    });
+
+    //Campos de filtrado por precio y botón de filtrar
+    document.getElementById("filterButton").addEventListener("click", function() {
+        let minPrice = parseFloat(document.getElementById("minPrice").value);
+        let maxPrice = parseFloat(document.getElementById("maxPrice").value);
+
+        let filteredProducts = productArray.filter(function(product) {
+            let productPrice = parseFloat(product.cost);
+
+            //Filtrar por el rango de precios
+            return (isNaN(minPrice) || productPrice >= minPrice) && (isNaN(maxPrice) || productPrice <= maxPrice);
+        });
+
+        // Mostrar los productos filtrados
+        showProductList(filteredProducts);
+    });
+  
     //Función para filtrar los elementos por nombre, en tiempo real (input event)
     document.getElementById("searchInput").addEventListener("input", function() {
         const searchInput = document.getElementById('searchInput').value.toLowerCase(); //Agarramos el valor de searchInput, pasándolo a minúscula para evitar errores
@@ -82,5 +165,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
         });
 
         showProductList(filteredProducts); //Mostramos la función filtrada
+    });
+
+    //Botón para limpiar el filtro
+    document.getElementById("cleanButton").addEventListener("click", function() {
+        document.getElementById("minPrice").value = "";
+        document.getElementById("maxPrice").value = "";
+        showProductList(productArray); //Mostrar array original
     });
 });
