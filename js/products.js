@@ -35,23 +35,6 @@ function showProductList(filteredArray = productArray) {
     //Finalmente, le pasamos el contenido de htmlContentToAppend al HTML (reemplazando el HTML interno de el div de id prod-list-container, el cual originalmente está vacío)
     document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
 }
-//Función para filtrar los productos en tiempo real
-function filtroProducts() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
-
-    const filteredProducts = productArray.filter(product => {
-        return product.name.toLowerCase().includes(searchInput) || 
-               product.description.toLowerCase().includes(searchInput);
-    });
-
-    // Mostrar los productos filtrados en la pantalla
-    showProductList(filteredProducts);
-}
-
-//Escuchar el input en tiempo real
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('searchInput').addEventListener('input', filtroProducts);
-});
 
 //Defimos función para guardar el producto al clickearlo
 function setProdID(id) {
@@ -89,5 +72,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
         } else { //Acción cuando la promesa no da "ok"
             console.error(`Error durante el fetch a ${categoryUrl}, puede que el recurso no esté disponible.`); //Loggear error en consola
         }
-    });   
+    });
+
+    //Función para filtrar los elementos por nombre, en tiempo real (input event)
+    document.getElementById("searchInput").addEventListener("input", function() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase(); //Agarramos el valor de searchInput, pasándolo a minúscula para evitar errores
+        const filteredProducts = productArray.filter(product => {
+            return product.name.toLowerCase().includes(searchInput) || product.description.toLowerCase().includes(searchInput); //Filtrar los elementos que coinciden con la búsqueda (searchInput)
+        });
+
+        showProductList(filteredProducts); //Mostramos la función filtrada
+    });
 });
