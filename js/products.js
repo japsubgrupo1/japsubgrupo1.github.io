@@ -3,8 +3,7 @@ let productArray, filteredArray = [];
 let catTitle = document.getElementById("catTitle"); //Obtenemos el h2 con el futuro título de la categoría
 let catDescription = document.getElementById("catDescription"); //Obtenemos el p con la futura descripción de la categoría
 
-//Función para mostrar los productos
-//Modificamos showProductList que pueda filtrar en base a un parámetro adicional
+//Función para mostrar los productos, modificando showProductList que pueda filtrar en base a un parámetro adicional
 function showProductList(filteredArr = filteredArray) {
     //Definimos variable vacía para luego pasar al HTML
     let htmlContentToAppend = "";
@@ -156,6 +155,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         // Mostrar los productos filtrados
         showProductList(filteredProducts);
+    });
+  
+    //Función para filtrar los elementos por nombre, en tiempo real (input event)
+    document.getElementById("searchInput").addEventListener("input", function() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase(); //Agarramos el valor de searchInput, pasándolo a minúscula para evitar errores
+        const filteredProducts = productArray.filter(product => {
+            return product.name.toLowerCase().includes(searchInput) || product.description.toLowerCase().includes(searchInput); //Filtrar los elementos que coinciden con la búsqueda (searchInput)
+        });
+
+        showProductList(filteredProducts); //Mostramos la función filtrada
     });
 
     //Botón para limpiar el filtro
