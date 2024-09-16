@@ -143,18 +143,22 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     //Campos de filtrado por precio y botón de filtrar
     document.getElementById("filterButton").addEventListener("click", function() {
-        let minPrice = parseFloat(document.getElementById("minPrice").value);
-        let maxPrice = parseFloat(document.getElementById("maxPrice").value);
-
-        let filteredProducts = productArray.filter(function(product) {
-            let productPrice = parseFloat(product.cost);
-
-            //Filtrar por el rango de precios
-            return (isNaN(minPrice) || productPrice >= minPrice) && (isNaN(maxPrice) || productPrice <= maxPrice);
-        });
-
-        // Mostrar los productos filtrados
-        showProductList(filteredProducts);
+        let minPrice = parseFloat(document.getElementById("minPrice").value); //Obtenemos valor escrito en el campo de precio mínimo
+        let maxPrice = parseFloat(document.getElementById("maxPrice").value); //Obtenemos valor escrito en el campo de precio máximo
+        if(isNaN(minPrice) && isNaN(maxPrice)) { //Evaluamos si ambos campos están vacíos
+            window.alert("Debes especificar un precio mínimo o máximo!"); //Lanzamos error en caso positivo
+        } else {
+            //Ejecutamos el resto de la función en caso negativo (se le ingresó un valor a almenos uno de los campos)
+            let filteredProducts = productArray.filter(function(product) {
+                let productPrice = parseFloat(product.cost);
+    
+                //Filtrar por el rango de precios
+                return (isNaN(minPrice) || productPrice >= minPrice) && (isNaN(maxPrice) || productPrice <= maxPrice);
+            });
+        
+            // Mostrar los productos filtrados
+            showProductList(filteredProducts);
+        }   
     });
   
     //Función para filtrar los elementos por nombre, en tiempo real (input event)
