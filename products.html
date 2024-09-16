@@ -44,7 +44,6 @@
     <div class="text-center p-4">
       <h2 id="catTitle"></h2> <!-- Agregamos h2 de id "catTitle", el cual vamos a modificar con JS para que aquí se coloque el nombre de la categoría -->
       <p class="lead" id="catDescription"></p> <!-- Agregamos p de id "catDesciption", el cual vamos a modificar con JS para que aquí se coloque la descripción de la categoría -->
-      <input type="text" id="searchInput" placeholder="Buscar...">
     </div>
     <!-- Botones y secciones de filtrado -->
     <div class="container" id="filterContainer">
@@ -86,6 +85,7 @@
             <input type="number" class="form-control" id="maxPrice" placeholder="Precio máx.">
           </div>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3" id="buttonGroup">
+            <input type="text" class="form-control" id="searchInput" placeholder="Buscar...">
             <button class="btn btn-outline-secondary align-items-center" type="button" id="filterButton"> Filtrar </button>
             <button class="btn btn-outline-secondary align-items-center" type="button" id="cleanButton">Limpiar</button>
           </div>

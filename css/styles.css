@@ -469,6 +469,11 @@ a.custom-card:hover {
   margin: 0;
 }
 
+/* Ajustamos el tamaño del input de búsqueda */
+#searchInput {
+  width: 30%;
+}
+
 /* Media Queries */
 /* Tablets (en vertical) - hasta 768px */
 @media screen and (max-width: 768px) {
@@ -644,7 +649,12 @@ a.custom-card:hover {
 
   /* Ajustamos el contenedor de los filtros para que matchee con el resto del contenido de la página */
   #filterContainer {
-    max-width: 78%;
+    max-width: 90%;
+  }
+
+  /* Ajustamos el tamaño del input de búsqueda */
+  #searchInput {
+    width: 100%;
   }
 }
 

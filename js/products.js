@@ -171,6 +171,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("cleanButton").addEventListener("click", function() {
         document.getElementById("minPrice").value = "";
         document.getElementById("maxPrice").value = "";
+        document.getElementById("searchInput").value = "";
         showProductList(productArray); //Mostrar array original
     });
 });
