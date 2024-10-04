@@ -33,6 +33,73 @@ function showProduct() {
     document.getElementById("prod-info-container").innerHTML = htmlContentToAppend;
 }
 
+// Función para obtener los comentarios desde la API
+async function getComments() {
+
+    //Constante que almacena la URL de la API
+    const productCommentsUrl = `${PRODUCT_INFO_COMMENTS_URL}${localStorage.getItem("prodID")}${EXT_TYPE}`;// Concatenamos el ID del prodcuto a la URL desde la constante declarada en init.js para luego obter de ahí el mismo ID que está almacenado en localstorage
+    //
+    try {
+        const response = await fetch(productCommentsUrl); // el código espera la respuesta del fetch para ejecutarse
+        const comments = await response.json(); // el método .json lee el cuerpo de la respuesta y lo convierte en un objeto JSON.
+        console.log("Comentarios obtenidos:", comments);
+        showComments(comments); // Mostrar los comentarios
+    } catch (error) {
+        console.error("Error al obtener comentarios:", error);
+    }
+}
+
+// Función para mostrar las calificaciones en pantalla
+function showComments(comments) {
+    
+    const container = document.getElementById("all-califications"); // Obtenemos el contenedor all-califications que está en el HTML
+    container.innerHTML = "";  // Limpiar el contenedor antes de agregar nuevos comentarios
+
+    //Para cada comentario se crea una nueva tarjeta con todas las especificaciones
+    comments.forEach(comment => {
+        let commentHTML = `
+            <div class="comment card mb-2" id="api-container">
+                <div class="card-body" id="api-comments">
+                    <div class="row">
+                        <div class="col-4">
+                        <h5 class="card-title"><strong>${comment.user}</strong></h5>
+                        </div>
+                        <div class="col-3 offset-md-5 d-flex flex-row-reverse">
+                        <p>${getStarsHTML(comment.score)}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                        <p>${comment.description}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 ms-auto">
+                        <p id="dateTime">${comment.dateTime.split(' ')[0]}</p>   
+                        <!--Usamos el método split para que sólo aparezca la fecha-->
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+        `;
+
+        container.innerHTML += commentHTML;
+    });
+}
+
+// Función para mostrar estrellas según la calificación
+function getStarsHTML(score) {
+    let stars = "";
+    for (let i = 1; i <= 5; i++) {
+        if (i <= score) {
+            stars += `<span class="fa fa-star checked"></span>`;
+        } else {
+            stars += `<span class="fa fa-star"></span>`;
+        }
+    }
+    return stars;
+}
+
 //Defimos función para guardar el producto al clickearlo
 function setProdID(id) {
     localStorage.setItem("prodID", id); //Guardamos el ID del producto clickeado en la key prodID en localStorage
@@ -87,5 +154,19 @@ document.addEventListener("DOMContentLoaded", function (e) {
             console.error(`Error durante el fetch a ${productUrl}, puede que el recurso no esté disponible.`); //Loggear error en consola
         }
     });
+
+    //Cargamos los comentarios del producto
+     const productCommentsUrl = `${PRODUCT_INFO_COMMENTS_URL}${localStorage.getItem("prodID")}${EXT_TYPE}`;
+    
+     // Obtener los comentarios usando fetch
+     fetch(productCommentsUrl)
+         .then(response => response.json())
+         .then(comments => {
+             console.log("Comentarios obtenidos:", comments); // Verificar en consola
+             showComments(comments); // Mostrar los comentarios en la página
+         })
+         .catch(error => {
+             console.error("Error al obtener comentarios:", error);
+         });
 
 });

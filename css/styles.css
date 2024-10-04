@@ -22,6 +22,7 @@ nav a {
   user-select: none;
 }
 
+
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
@@ -192,6 +193,7 @@ a.custom-card:hover {
 }
 
 /* Agregado por el equipo */
+
 /* Logo en la página de login */
 #loginLogo {
   width: 70%;
@@ -321,6 +323,7 @@ a.custom-card:hover {
 }
 
 /* product-info */
+
 /* Estilizamos el contenedor de la información de cada producto */
 #prod-info-container {
   gap: 1%; /* Espaciado entre productos */
@@ -472,6 +475,67 @@ a.custom-card:hover {
 /* Ajustamos el tamaño del input de búsqueda */
 #searchInput {
   width: 30%;
+}
+
+  /* Sección calificaciones */
+  #califications-div > *{
+    margin-top: 1em;
+  }
+
+  #califications-div h5, textarea {
+    color: white;
+    font-family: 'Inria Sans', Arial, sans-serif;
+  }
+
+  #user-calification-btn{
+    margin-top: 2em;
+    background-color: #F09100;
+    color:white;
+    font-family: 'Inria Sans', Arial, sans-serif;
+  }
+
+  /* Estilos para las estrellas*/
+  .star-rating .fa {
+    font-size: 2rem; /* Tamaño de las estrellas */
+    color: #ccc;  /*Color de las estrellas sin seleccionar */
+    cursor: pointer;
+}
+
+.star-rating .fa:hover,
+.star-rating .fa.selected {
+    color: #F09100 /* Color de las estrellas seleccionadas*/
+}
+
+.star-rating{
+  margin: 1em;
+}
+
+.card{
+  background-color: #757575;
+}
+
+.card-body{
+  background-color: #757575;
+  max-height: min-content;
+}
+
+#dateTime{
+  text-align: end;
+}
+
+#api-comments{
+  margin: 0.2em;
+  background-color: #979696;
+  border-radius: 0.5em;
+  
+}
+
+#all-califications{
+  border: none;
+}
+
+#api-container{
+  border: none;
 }
 
 /* Media Queries */
@@ -751,4 +815,5 @@ a.custom-card:hover {
   #filterContainer {
     max-width: none;
   }
+
 }
