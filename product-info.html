@@ -61,29 +61,37 @@
           </div>
         </div>
 
-        <!--Contenedor del formulario-->
-        <div class="col-sm-12 col-lg-5 ">
-          <div class="card">
-            <div class="card-body" id="user-calification">
-                <h5 class="card-title">Califica el producto</h5>
-                <textarea class="form-control" id="calificationTextArea" rows="3" placeholder="Ingrese aquí su reseña..."></textarea>
-                <div class="row">
-                  <div class="col-8 star-rating">
-                    <span class="fa fa-star" data-value="1"></span>
-                    <span class="fa fa-star" data-value="2"></span>
-                    <span class="fa fa-star" data-value="3"></span>
-                    <span class="fa fa-star" data-value="4"></span>
-                    <span class="fa fa-star" data-value="5"></span>
-                  </div>
-                  <div class="col d-grid gap-2 d-md-flex justify-content-md-center">
-                    <button class="btn btn-warning" type="button" id="user-calification-btn">Enviar</button>
-                  </div>
-                </div>
+        <div class="container mt-4">
+          <!-- Contenedor del formulario de comentarios -->
+          <div class="card mb-3">
+              <div class="card-body">
+                  <h5 class="card-title">Califica el producto</h5>
+                  <form id="commentForm">
+                      <div class="mb-3">
+                          <input type="text" class="form-control" id="userName" placeholder="Tu nombre" required>
+                      </div>
+                      <div class="mb-3">
+                          <textarea class="form-control" id="userComment" rows="3" placeholder="Escribe tu reseña" required></textarea>
+                      </div>
+                      <div class="mb-3">
+                          <select class="form-select" id="userRating" required>
+                              <option value="">Selecciona una calificación</option>
+                              <option value="1">1 estrella</option>
+                              <option value="2">2 estrellas</option>
+                              <option value="3">3 estrellas</option>
+                              <option value="4">4 estrellas</option>
+                              <option value="5">5 estrellas</option>
+                          </select>
+                      </div>
+                      <button type="submit" class="btn btn-warning" id="submitComment">Enviar</button>
+                  </form>
               </div>
           </div>
-        </div>
+      
+          <!-- Contenedor donde se muestran todos los comentarios -->
+          <div id="all-califications"></div>
       </div>
-    </div>
+      
     
   </main>
   <footer class="text-muted">
