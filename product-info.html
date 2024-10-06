@@ -10,6 +10,9 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <!--Incluímos Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -38,12 +41,50 @@
     </div>
   </nav>
   <main>
+
+    <!--Contenedor del producto-->
     <div class="container">
       <div class="row">
         <div class="d-flex" id="prod-info-container"> <!-- Agregamos div que a futuro contendrá la información de los productos, traídos de un JSON -->
         </div>
       </div>
+
+    <!--Contenedor de las calificaciones-->
+      <div class="row" id="califications-div">
+        <div class="col-sm-12 col-lg-6" id="api-califications">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Calificaciones</h5>
+              <div class="col card" id="all-califications">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Contenedor del formulario-->
+        <div class="col-sm-12 col-lg-5 ">
+          <div class="card">
+            <div class="card-body" id="user-calification">
+                <h5 class="card-title">Califica el producto</h5>
+                <textarea class="form-control" id="calificationTextArea" rows="3" placeholder="Ingrese aquí su reseña..."></textarea>
+                <div class="row">
+                  <div class="col-8 star-rating">
+                    <span class="fa fa-star" data-value="1"></span>
+                    <span class="fa fa-star" data-value="2"></span>
+                    <span class="fa fa-star" data-value="3"></span>
+                    <span class="fa fa-star" data-value="4"></span>
+                    <span class="fa fa-star" data-value="5"></span>
+                  </div>
+                  <div class="col d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button class="btn btn-warning" type="button" id="user-calification-btn">Enviar</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
     </div>
+    
   </main>
   <footer class="text-muted">
     <div class="container">
