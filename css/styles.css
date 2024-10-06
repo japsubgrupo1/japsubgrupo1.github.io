@@ -482,9 +482,14 @@ a.custom-card:hover {
     margin-top: 1em;
   }
 
-  #califications-div h5, textarea {
+  #califications-div h4, textarea, h6 {
     color: white;
     font-family: 'Inria Sans', Arial, sans-serif;
+  }
+
+  #user-calification h5{
+    color: white;
+    font-family: 'Inria Sans', Arial, sans-serif
   }
 
   #user-calification-btn{
@@ -493,6 +498,11 @@ a.custom-card:hover {
     color:white;
     font-family: 'Inria Sans', Arial, sans-serif;
   }
+
+  #api-div{
+    height: 25em;
+  }
+  
 
   /* Estilos para las estrellas*/
   .star-rating .fa {
@@ -536,6 +546,23 @@ a.custom-card:hover {
 
 #api-container{
   border: none;
+}
+
+/* Scroll bar personalizada*/
+
+/*Ancho*/
+::-webkit-scrollbar{
+  width: 0.5rem;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #979797; 
 }
 
 /* Media Queries */
@@ -720,6 +747,11 @@ a.custom-card:hover {
   #searchInput {
     width: 100%;
   }
+
+  #api-div{
+    overflow: visible !important;
+    height: auto !important;
+  }
 }
 
 /* Ocultar banner en index.html una vez tenemos menos de 768px de ancho de pantalla */
@@ -727,6 +759,7 @@ a.custom-card:hover {
   .jumbotron {
     display: none;
   }
+
 }
 
 /* Celulares - hasta 320px */
@@ -816,4 +849,7 @@ a.custom-card:hover {
     max-width: none;
   }
 
+  #api-comments{
+
+  }
 }
