@@ -61,10 +61,10 @@ function showComments(comments) {
             <div class="comment card mb-2" id="api-container">
                 <div class="card-body" id="api-comments">
                     <div class="row">
-                        <div class="col-4">
-                        <h5 class="card-title"><strong>${comment.user}</strong></h5>
+                        <div class="col-sm-4 col-md-4">
+                        <h6 class="card-title"><strong>${comment.user}</strong></h6>
                         </div>
-                        <div class="col-3 offset-md-5 d-flex flex-row-reverse">
+                        <div class="col-md-3 offset-md-5 d-flex md-flex-row-reverse">
                         <p>${getStarsHTML(comment.score)}</p>
                         </div>
                     </div>
@@ -74,7 +74,7 @@ function showComments(comments) {
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-3 ms-auto">
+                        <div class="col-md-3 ms-auto">
                         <p id="dateTime">${comment.dateTime.split(' ')[0]}</p>   
                         <!--Usamos el método split para que sólo aparezca la fecha-->
                         </div>
