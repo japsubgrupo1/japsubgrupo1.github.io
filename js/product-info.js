@@ -169,4 +169,58 @@ document.addEventListener("DOMContentLoaded", function (e) {
              console.error("Error al obtener comentarios:", error);
          });
 
+         function addComment() {
+            // Obtener los valores del formulario
+            const user = document.getElementById("userName").value;
+            const description = document.getElementById("userComment").value;
+            const score = parseInt(document.getElementById("userRating").value);
+            const dateTime = new Date().toISOString(); // Obtener la fecha y hora actual en formato ISO (ej: 2024-10-06T14:23:42.511Z)
+        
+            // Validación para asegurarse de que los campos estén completos
+            if (user && description) {
+                // Crear el HTML del nuevo comentario
+                const newCommentHTML = `
+                    <div class="comment card mb-2" id="api-container">
+                        <div class="card-body" id="api-comments">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4">
+                                <h6 class="card-title"><strong>${user}</strong></h6>
+                                </div>
+                                <div class="col-md-3 offset-md-5 d-flex md-flex-row-reverse">
+                                <p>${getStarsHTML(score)}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-10">
+                                <p>${description}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 ms-auto">
+                                <p id="dateTime">${dateTime.split('T')[0]}</p>   
+                                <!--Usamos el método split para que sólo aparezca la fecha-->
+                                </div>
+                            </div>                   
+                        </div>
+                    </div>
+                `;
+        
+                // Agregar el nuevo comentario al contenedor 'all-califications'
+                const container = document.getElementById("all-califications");
+                container.innerHTML += newCommentHTML;  // Añadir el nuevo comentario sin borrar los existentes
+        
+                // Limpiar los campos del formulario
+                document.getElementById("userName").value = "";
+                document.getElementById("userComment").value = "";
+                document.getElementById("userRating").value = "5";
+            } else {
+                alert("Falta completar datos.");
+            }
+        }
+        //botón submitComment al evento de clic
+document.getElementById("submitComment").addEventListener("click", function() {
+    addComment(); // Llama a la función addComment cuando se hace clic en el botón
+});
+
+
 });
