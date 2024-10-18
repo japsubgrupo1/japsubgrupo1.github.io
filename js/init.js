@@ -43,7 +43,7 @@ let getJSONData = function(url){
 //Creamos función para desconectarse
 function logout() {
   localStorage.removeItem("loggedIn"); //Eliminamos la key de loggeo de localStorage
-  localStorage.removeItem("username"); //Eliminamos la key del nombre de usuario de localStorage
+  localStorage.removeItem("email"); //Eliminamos la key del nombre de usuario de localStorage
   window.location.href = "login.html"; //Redirigimos a login.html
 }
 
@@ -51,11 +51,24 @@ function logout() {
 function renderUsername() {
   //Obtenemos nav-link vacío para popular con el nombre de usuario
   const userLogout = document.getElementById("userLogout");
+
+  //Obtenemos el correo del localStorage
+  const email = localStorage.getItem("email");
+
+  //Dividimos el correo electrónico con split en el '@' y seleccionamos el primer elemento
+  const username = email ? email.split('@')[0]:""; // se usan las comillas vacías para evitar que haya un error en caso de que el valor sea null
+  userLogout.textContent = `${username} |`;
+  renderLogoutLabel();
+}
+
+
+/*
   //Cambiamos el texto del mismo elemento para que popule nuestro nombre de usuario, seguido de una barra (|)
-  userLogout.textContent = `${localStorage.getItem("username")} | `;
+  userLogout.textContent = `${localStorage.getItem("email")} | `;
   //Llamamos a la función para renderizar la opción de deslogueo
   renderLogoutLabel();
 }
+*/
 
 //Creamos función para renderizar opción de deslogueo
 function renderLogoutLabel() {

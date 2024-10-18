@@ -99,10 +99,10 @@ footer p {
 
 .alert {
   position: fixed;
-  top: 80px;
-  width: 50%;
-  left: 50%;
-  transform: translate(-50%, 0);
+  top: 15%;
+  left: 18%;
+  width: 60%;
+  text-align: center;
 }
 
 .lds-ring {
@@ -209,6 +209,7 @@ a.custom-card:hover {
   width: 100%;
   max-width: 450px;
   padding: 3.5% 1.5%;
+  padding-bottom: 2%;
   background-color: #212529;
   border-radius: 10px;
   font-family: 'Inria Sans', Arial, sans-serif;
@@ -228,46 +229,27 @@ a.custom-card:hover {
   content: " ";
 }
 
-#credentialsWindow {
-  display: flex; /* Utilizamos flexbox para mejor colocación de los contenedores */
-}
-
-.credentialLabel, .credentialInput {
-  flex-basis: 30%; /* Utilizamos flex-basis para indicar qué porcentaje del contenedor padre queremos que tome este elemento */
-  text-align: right;
-}
-
-.credentialLabel > label {
-  font-size: 1.3em;
-  margin-top: 15%;
-}
-
-.credentialInput {
-  flex-basis: 80%; /* Este flex-basis reemplaza el valor que se le da a .credentialInput en la línea 218 */
-  text-align: right;
-  font-size: 1em;
-  line-height: 2em;
-}
-
-.credentialInput > input, #loginBtn {
-  border-radius: 3px;
-  border: 0;
-  width: 90%;
-  max-width: 270px;
-  margin-top: 5%;
-  padding-left: 3%;
-}
-
-/* Este código de acá selecciona todo input con type="password" dentro de la clase credentialInput, esto se hace para que los puntos del medio al escribir la contraseña no sean minúsculos, como serían sin estos dos bloques */
-.credentialInput > input[type="password"] {
-  font: small-caption;
-  font-size: 1em;
-  line-height: 2em;
-}
-
 /* Este código selecciona el placeholder (texto cuando no se escribió nada en el campo) del input anteriormente mencionado, cambiándole nuevamente la fuenta a Inria Sans, para que no quede con small-caption/Segoe UI */
 .credentialInput > input[type="password"]::placeholder {
   font-family: 'Inria Sans', Arial, sans-serif;
+}
+
+#email::placeholder, 
+#password::placeholder {
+  color: transparent; /* Esto hace que el placeholder no sea visible */
+}
+
+#alertInvalidEmail{
+  visibility:hidden
+}
+
+#alertInvalidPassword{
+  visibility: hidden;
+}
+
+.underAlerts{
+  color: #bd2f3a;
+  font-weight: bold;
 }
 
 #loginBtn {
@@ -602,19 +584,20 @@ a.custom-card:hover {
   }
 
   /* Escondemos las etiquetas de "usuario" y "contraseña", ya que estarán en el placeholder de ambos input - también escondemos el texto de "volver arriba" del footer */
-  .credentialLabel, .float-end {
+  .credentialLabel > label{
     display: none;
-  }
-
-  /* Centramos todos los elementos */
-  #credentialsWindow {
-    justify-content: center;
   }
 
   /* Damos a cada textbox el ancho total de su contenedor padre */
   .credentialInput > input {
     width: 100%;
     max-width: 100%;
+  }
+  
+  /*Place holders*/
+  #email::placeholder, 
+  #password::placeholder {
+    color:#757575; /* Puedes poner el color que prefieras para el placeholder */
   }
 
   /* Estilizamos el footer */
@@ -782,11 +765,6 @@ a.custom-card:hover {
     color: #212529;
   }
 
-  /* Centramos el contenedor de las credenciales */
-  #credentialsWindow {
-    justify-content: center;
-  }
-
   /* Editamos el tamaño de los input */
   .credentialInput {
     flex-basis: 90%;
@@ -810,23 +788,6 @@ a.custom-card:hover {
     font-size: 1.2em;
   }
 
-  /* Estilizamos el botón de Ingresar */
-  #loginBtn {
-    width: 80%;
-    max-width: 100%;
-    line-height: 3em;
-    margin-top: 5%;
-    display: block;
-    /* Centramos el botón */
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  /* Ajustamos tamaño de las alertas */
-  #alertLoginOK, #alertLoginFAIL {
-    width: 90%;
-  }
   
   /* Página de productos */
   /* Definimos un ancho máximo a la página de los productos en celulares */
