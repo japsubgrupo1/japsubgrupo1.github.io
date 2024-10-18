@@ -26,17 +26,35 @@
   <!-- Sección principal -->
   <main class="pb-5">
     <div id="loginWindow"> <!-- Ventana con indicaciones de login -->
-      <h1 id="loginTitle"><span id="loginL">l</span>og<span id="loginSpace"></span>in</h1> <!-- Título de la ventana, la l y el espacio están separados por temas de estilizado -->      
-      <div id="credentialsWindow"> <!-- Contenedor de etiquetas, inputs y el botón -->
-        <div class="credentialLabel"> <!-- Subcontentedor con etiquetas -->
-          <label for="username">usuario</label>
-          <label for="password">contraseña</label>
+      <h1 id="loginTitle"><span id="loginL">l</span>og<span id="loginSpace"></span>in</h1> <!--Título de la ventana, la l y el espacio están separados por temas de estilizado-->   
+     <!-- Form de acceso-->
+    <form id="credentialsWindow">
+        <div class="credentialLabel mb-3">
+          <label for="email" class="form-label" id="credentialLabel ">Correo electrónico</label>
+          <input type="email" class="form-control" id="email" autocomplete="correo electrónico" placeholder="correo electrónico">
+          <div class="underAlerts" id="alertInvalidEmail">
+            Por favor, ingrese un correo electrónico válido.
+          </div>
         </div>
-        <div class="credentialInput"> <!-- Subcontenedor con inputs y el botón -->
-          <input type="text" name="username" id="username" autocomplete="username" placeholder="usuario">
-          <input type="password" name="password" id="password" autocomplete="current-password" placeholder="contraseña">
-          <button id="loginBtn" onclick="login()">INGRESAR</button>
+        <div class="credentialLabel mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="password" autocomplete="current-password" placeholder="contraseña">
+          <div class="underAlerts" id="alertInvalidPassword">
+            La contraseña debe tener al menos 8 caracteres.
+          </div>
         </div>
+        <!--Botón-->
+        <div class="d-grid gap-2 d-md-flex align-items-center justify-content-md-end">
+          <button type="button" class="btn btn-primary me-md-2" id="loginBtn" onclick="login()">INGRESAR</button>
+        </div>
+    </form>
+
+      <!-- Alertas para mostrar éxito o error -->
+      <div id="alertLoginOK" class="alert alert-success" style="display:none;">
+        ¡Login exitoso!
+      </div>
+      <div id="alertLoginFail" class="alert alert-danger" style="display:none;">
+        Por favor, completa todos los campos.
       </div>
     </div>
   </main>
@@ -49,16 +67,8 @@
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
-  <!-- Alertas de login exitoso y erróneo -->
   <!-- Originalmente tomadas del taller 3 de la semana 7 y modificadas levemente -->
   <!-- https://github.com/erneislost/s7t3 -->
-  <div class="alert alert-success alert-dismissible fade" role="alert" id="alertLoginOK" style="display:none">
-    <p>¡Login exitoso!</p>
-  </div>
-  <div class="alert alert-danger alert-dismissible fade" role="alert" id="alertLoginFAIL" style="display:none">
-    <p>Los datos ingresados son incorrectos</p>
-    <button type="button" class="btn-close" aria-label="Close" onclick="closeAlert()"></button>
-  </div>
   <script src="js/login.js"></script>
 </body>
 </html>
