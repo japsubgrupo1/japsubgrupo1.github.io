@@ -549,30 +549,86 @@ a.custom-card:hover {
 
 /* Sección perfil*/
 
+#profileContainer {
+  max-height: 600px;
+}
+
+#profileContainer span{
+  color: #f84857;
+}
+
 #profilePicture {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
+  padding-top: 2em;
 }
 
 #profilePicture img {
-  max-width: 100%;
-  height: auto;
+  max-width: 80%;
 }
 
 #profilePicture button {
   margin-top: 10px; /* Añadir margen entre la imagen y el botón */
+  background-color:#F09100;
+  border-color: #F09100;
 }
 
 #personalData{
-  padding: 2rem;
+  padding: 2em;
+  background-color: #0000008a;
+  border-radius: 1em;
+  margin: 0.5em;
+}
+
+#personalData > h4{
+  color:#F09100 ;
 }
 
 #contactData{
-  padding: 2rem;
+  max-width: 50%;
+  height: 450px;
+  padding: 2em;
+  background-color: #0000008a;
+  border-radius: 1em;
+  margin: 0.5em;
+  position: relative;
 }
+
+#contactData > h4{
+  color:#F09100 ;
+}
+
+#contactData > label{
+  color: white ;
+}
+
+.inputGroup{
+  padding-bottom: 1em;
+}
+
+.inputGroup > input{
+  border-radius: 1em;
+}
+
+#saveEditBtn{
+  background-color:#F09100;
+  border-color: #F09100;
+}
+
+.saveEditContainer{
+  position: absolute;
+  bottom: 10px; /* Ajusta esta distancia según sea necesario */
+  left: 0; /* Alinear a la izquierda */
+  right: 0; /* Alinear a la derecha */
+  display: flex; /* Usar flex para centrar el botón si es necesario */
+  justify-content: flex-end; /* Alinear el botón a la derecha */
+  padding: 0 1rem; /* Espaciado a los lados del botón */
+  margin-top: 50%;
+}
+
 
 /* Media Queries */
 /* Tablets (en vertical) - hasta 768px */
