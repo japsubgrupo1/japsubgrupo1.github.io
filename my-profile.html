@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="light">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,6 +7,7 @@
   <title>eMercado - Todo lo que busques está aquí</title>
   <!-- Importamos Google Fonts: "Inria Sans" y "Raleway" (la última ya importada) -->
   <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
@@ -57,18 +58,29 @@
         </ul>
       </div>
     </div>
+    <!-- Slider de modo oscuro / claro -->
+    <li class="nav-item align-items-center d-flex">
+      <i class="fas fa-sun" style="color: white"></i>
+      <div class="ms-2 form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="themeSwitch"/>
+      </div>
+      <i class="fas fa-moon" style="color: white"></i>
+    </li>
   </nav>
 
   <main>
   <div class="container-fluid mt-5 mx-2 mb-5" >
     <div class="row justify-content-center" id="profileContainer">
       <!--Columna foto de perfil-->
-      <div class="col-2" id="profilePicture">
-        <img src="./img/profile-picture.png" alt="profile-picture" id="profilePicture">
-        <button class="btn btn-primary mt-3" type="button">Editar foto</button>
-      </div>      
+      <div class="col-2" id="profilePictureDiv">
+        <div id="pfpContainer">
+          <img src="./img/profile-picture.png" alt="Foto de perfil" id="profilePicture">
+        </div>
+        <input type="file" accept="image/*" id="pfpChange" hidden>
+        <label for="pfpChange" class="btn btn-primary mt-2" id="pfpBtn">Editar foto</label>
+      </div>
 
-      <!--Columna datos personales-->
+      <!-- Columna datos personales -->
       <div class="col-md-4 text-left" id="personalData">
         <h4 class="text-center mb-4">Datos personales</h4>
         <form class="flex-grow-1">
@@ -91,9 +103,9 @@
       </form>
       </div>
 
-      <!--Columna datos de contacto-->
+      <!-- Columna datos de contacto -->
       <div class="col-md-4 text-left" id="contactData">
-        <h4 class="text-center mb-4">Datos personales</h4>
+        <h4 class="text-center mb-4">Datos de contacto</h4>
         <form class="flex-grow-1">
           <div class="form-group inputGroup">
               <label for="email" class="text-white mb-2">Correo electrónico <span>*</span></label>

@@ -40,46 +40,29 @@ let getJSONData = function(url){
     });
 }
 
-/*
-//Creamos función para desconectarse
-function logout() {
-  localStorage.removeItem("loggedIn"); //Eliminamos la key de loggeo de localStorage
-  localStorage.removeItem("email"); //Eliminamos la key del nombre de usuario de localStorage
-  window.location.href = "login.html"; //Redirigimos a login.html
+//Modos de color
+const themeSwitch = document.getElementById("themeSwitch"); //Obtenemos el slider
+const theme = localStorage.getItem("theme"); //Obtenemos la key del tema desde localStorage
+
+//Verificamos si hay tema guardado en localStorage
+if(theme) {
+  themeSwitch.checked = theme === "dark"; //Marcamos el slider como activado en caso de que el slider esté en "dark"
+  switchTheme(themeSwitch.checked); //Aplicamos el tema
+} else {
+  themeSwitch.checked = false; //En caso contrario, seteamos el slider como desactivado
 }
 
-//Creamos función para renderizar nombre de usuario
-function renderUsername() {
-  //Obtenemos nav-link vacío para popular con el nombre de usuario
-  const userDropdown = document.getElementById("userDropdown");
+//Detectamos los cambios en el slider
+themeSwitch.addEventListener("change", (e) => {
+  switchTheme(e.target.checked); //Llamamos a la función para cambiar de tema en base al estado actual del slider
+});
 
-  //Obtenemos el correo del localStorage
-  const username = localStorage.getItem("email");
-
-  //Dividimos el correo electrónico con split en el '@' y seleccionamos el primer elemento
-  const username = email ? email.split('@')[0]:""; // se usan las comillas vacías para evitar que haya un error en caso de que el valor sea null
-  
-  userDropdown.textContent = `${username} |`;
-  renderLogoutLabel();
+//Función para cambiar el tema
+function switchTheme(isChecked) {
+  const theme = isChecked ? "dark" : "light"; //Determinamos el tema en función al slider
+  document.documentElement.dataset.bsTheme = theme; //Aplicamos el tema a la propiedad dataset / data-bs-theme del tag HTML raíz
+  localStorage.setItem("theme", theme); //Guardamos el tema seleccionado en localStorage
 }
-
-//Creamos función para renderizar opción de deslogueo
-function renderLogoutLabel() {
-  //Creamos elemento p de nombre logoutLabel
-  const logoutLabel = document.createElement("p");
-  //Seteamos id para nuestro elemento
-  logoutLabel.setAttribute("id", "logoutLabel");
-  //Seteamos atributo onclick para que al apretarse ejecute la función logout()
-  logoutLabel.setAttribute("onclick", "logout()");
-  //Editamos el texto de nuestro elemento, para que diga "Salir"
-  logoutLabel.textContent = "Salir";
-  //Seteamos el elemento como hijo de userLogout
-  userLogout.appendChild(logoutLabel);
-}
-
-//Finalmente, llamamos a la función renderUsername(), para que renderize el nombre de usuario y la opción para desloguearse
-renderUsername();
-*/
 
 document.addEventListener("DOMContentLoaded", function () {
   // Función para renderizar el nombre de usuario en el dropdown
@@ -112,4 +95,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
-

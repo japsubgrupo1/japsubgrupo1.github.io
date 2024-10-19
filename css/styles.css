@@ -548,16 +548,15 @@ a.custom-card:hover {
 }
 
 /* Sección perfil*/
-
 #profileContainer {
   max-height: 600px;
 }
 
-#profileContainer span{
+#profileContainer span {
   color: #f84857;
 }
 
-#profilePicture {
+#profilePictureDiv {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -566,30 +565,43 @@ a.custom-card:hover {
   padding-top: 2em;
 }
 
-#profilePicture img {
-  max-width: 80%;
+#pfpContainer {
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
-#profilePicture button {
-  margin-top: 10px; /* Añadir margen entre la imagen y el botón */
+#profilePicture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#profilePictureDiv label, #saveEditBtn {
   background-color:#F09100;
   border-color: #F09100;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 
-#personalData{
+#profilePictureDiv label:hover, #saveEditBtn:hover {
+  background-color: #975d05;
+  border-color: #975d05;
+}
+
+#personalData {
   padding: 2em;
   background-color: #0000008a;
   border-radius: 1em;
   margin: 0.5em;
 }
 
-#personalData > h4{
+#personalData > h4 {
   color:#F09100 ;
 }
 
-#contactData{
+#contactData {
   max-width: 50%;
-  height: 450px;
   padding: 2em;
   background-color: #0000008a;
   border-radius: 1em;
@@ -597,30 +609,25 @@ a.custom-card:hover {
   position: relative;
 }
 
-#contactData > h4{
+#contactData > h4 {
   color:#F09100 ;
 }
 
-#contactData > label{
+#contactData > label {
   color: white ;
 }
 
-.inputGroup{
+.inputGroup {
   padding-bottom: 1em;
 }
 
-.inputGroup > input{
+.inputGroup > input {
   border-radius: 1em;
 }
 
-#saveEditBtn{
-  background-color:#F09100;
-  border-color: #F09100;
-}
-
-.saveEditContainer{
+.saveEditContainer {
   position: absolute;
-  bottom: 10px; /* Ajusta esta distancia según sea necesario */
+  bottom: 3.5%; /* Ajusta esta distancia según sea necesario */
   left: 0; /* Alinear a la izquierda */
   right: 0; /* Alinear a la derecha */
   display: flex; /* Usar flex para centrar el botón si es necesario */
@@ -628,7 +635,6 @@ a.custom-card:hover {
   padding: 0 1rem; /* Espaciado a los lados del botón */
   margin-top: 50%;
 }
-
 
 /*Sección navbar*/
 
