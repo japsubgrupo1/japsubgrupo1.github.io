@@ -22,7 +22,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Inicio</a>
+            <a class="nav-link" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -30,8 +30,14 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item"> <!-- Agregamos elemento que utilizaremos para popular el nombre de usuario y opción para desconectarse -->
-            <a class="nav-link" id="userLogout"></a>
+          <div class=" nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+            <ul class="dropdown-menu" aria-labelledby="userDropdown" id="dropdownContainer">
+              <li><a class="dropdown-item text-white" href="#">mi carrito</a></li>
+              <li><a class="dropdown-item text-white" href="my-profile.html">mi perfil</a></li>
+              <li><a class="dropdown-item" id="logoutButton" href="login.html">cerrar sesión</a></li>
+            </ul>
+          </div>
           </li>
         </ul>
       </div>

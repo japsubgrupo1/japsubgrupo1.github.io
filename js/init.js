@@ -40,52 +40,6 @@ let getJSONData = function(url){
     });
 }
 
-//Creamos función para desconectarse
-function logout() {
-  localStorage.clear(); //Limpiamos localStorage
-  window.location.href = "login.html"; //Redirigimos a login.html
-}
-
-//Creamos función para renderizar nombre de usuario
-function renderUsername() {
-  //Obtenemos nav-link vacío para popular con el nombre de usuario
-  const userLogout = document.getElementById("userLogout");
-
-  //Obtenemos el correo del localStorage
-  const email = localStorage.getItem("email");
-
-  //Dividimos el correo electrónico con split en el '@' y seleccionamos el primer elemento
-  const username = email ? email.split('@')[0]:""; // se usan las comillas vacías para evitar que haya un error en caso de que el valor sea null
-  userLogout.textContent = `${username} | `;
-  renderLogoutLabel();
-}
-
-
-/*
-  //Cambiamos el texto del mismo elemento para que popule nuestro nombre de usuario, seguido de una barra (|)
-  userLogout.textContent = `${localStorage.getItem("email")} | `;
-  //Llamamos a la función para renderizar la opción de deslogueo
-  renderLogoutLabel();
-}
-*/
-
-//Creamos función para renderizar opción de deslogueo
-function renderLogoutLabel() {
-  //Creamos elemento p de nombre logoutLabel
-  const logoutLabel = document.createElement("p");
-  //Seteamos id para nuestro elemento
-  logoutLabel.setAttribute("id", "logoutLabel");
-  //Seteamos atributo onclick para que al apretarse ejecute la función logout()
-  logoutLabel.setAttribute("onclick", "logout()");
-  //Editamos el texto de nuestro elemento, para que diga "Salir"
-  logoutLabel.textContent = "Salir";
-  //Seteamos el elemento como hijo de userLogout
-  userLogout.appendChild(logoutLabel);
-}
-
-//Finalmente, llamamos a la función renderUsername(), para que renderize el nombre de usuario y la opción para desloguearse
-renderUsername();
-
 //Modos de color
 const themeSwitch = document.getElementById("themeSwitch"); //Obtenemos el slider
 const theme = localStorage.getItem("theme"); //Obtenemos la key del tema desde localStorage
@@ -109,3 +63,35 @@ function switchTheme(isChecked) {
   document.documentElement.dataset.bsTheme = theme; //Aplicamos el tema a la propiedad dataset / data-bs-theme del tag HTML raíz
   localStorage.setItem("theme", theme); //Guardamos el tema seleccionado en localStorage
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Función para renderizar el nombre de usuario en el dropdown
+  function renderUsername() {
+    const userDropdown = document.getElementById("userDropdown");
+    const email = localStorage.getItem("email");
+
+    // Si hay un email almacenado, lo usamos; de lo contrario, mostramos "Usuario"
+    const username = email ? email.split('@')[0] : "Usuario";
+
+    if (userDropdown) {
+      userDropdown.textContent = username;
+    }
+  }
+
+  // Verificamos si el usuario está autenticado antes de mostrar el nombre
+  const loggedIn = localStorage.getItem("loggedIn");
+  
+  if (loggedIn === "loggedIn") {
+    renderUsername();
+    
+    // Asignar el evento para cerrar sesión
+    const logoutButton = document.getElementById("logoutButton");
+    if (logoutButton) {
+      logoutButton.addEventListener("click", function () {
+        localStorage.removeItem("loggedIn");
+        localStorage.removeItem("email");
+        window.location.href = "login.html"; // Redirigir a la página de login
+      });
+    }
+  }
+});
