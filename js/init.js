@@ -42,8 +42,7 @@ let getJSONData = function(url){
 
 //Creamos función para desconectarse
 function logout() {
-  localStorage.removeItem("loggedIn"); //Eliminamos la key de loggeo de localStorage
-  localStorage.removeItem("email"); //Eliminamos la key del nombre de usuario de localStorage
+  localStorage.clear(); //Limpiamos localStorage
   window.location.href = "login.html"; //Redirigimos a login.html
 }
 
