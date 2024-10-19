@@ -57,7 +57,7 @@ function renderUsername() {
 
   //Dividimos el correo electrónico con split en el '@' y seleccionamos el primer elemento
   const username = email ? email.split('@')[0]:""; // se usan las comillas vacías para evitar que haya un error en caso de que el valor sea null
-  userLogout.textContent = `${username} |`;
+  userLogout.textContent = `${username} | `;
   renderLogoutLabel();
 }
 
@@ -86,3 +86,27 @@ function renderLogoutLabel() {
 
 //Finalmente, llamamos a la función renderUsername(), para que renderize el nombre de usuario y la opción para desloguearse
 renderUsername();
+
+//Modos de color
+const themeSwitch = document.getElementById("themeSwitch"); //Obtenemos el slider
+const theme = localStorage.getItem("theme"); //Obtenemos la key del tema desde localStorage
+
+//Verificamos si hay tema guardado en localStorage
+if(theme) {
+  themeSwitch.checked = theme === "dark"; //Marcamos el slider como activado en caso de que el slider esté en "dark"
+  switchTheme(themeSwitch.checked); //Aplicamos el tema
+} else {
+  themeSwitch.checked = false; //En caso contrario, seteamos el slider como desactivado
+}
+
+//Detectamos los cambios en el slider
+themeSwitch.addEventListener("change", (e) => {
+  switchTheme(e.target.checked); //Llamamos a la función para cambiar de tema en base al estado actual del slider
+});
+
+//Función para cambiar el tema
+function switchTheme(isChecked) {
+  const theme = isChecked ? "dark" : "light"; //Determinamos el tema en función al slider
+  document.documentElement.dataset.bsTheme = theme; //Aplicamos el tema a la propiedad dataset / data-bs-theme del tag HTML raíz
+  localStorage.setItem("theme", theme); //Guardamos el tema seleccionado en localStorage
+}
