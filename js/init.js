@@ -40,6 +40,7 @@ let getJSONData = function(url){
     });
 }
 
+/*
 //Creamos función para desconectarse
 function logout() {
   localStorage.removeItem("loggedIn"); //Eliminamos la key de loggeo de localStorage
@@ -50,25 +51,17 @@ function logout() {
 //Creamos función para renderizar nombre de usuario
 function renderUsername() {
   //Obtenemos nav-link vacío para popular con el nombre de usuario
-  const userLogout = document.getElementById("userLogout");
+  const userDropdown = document.getElementById("userDropdown");
 
   //Obtenemos el correo del localStorage
-  const email = localStorage.getItem("email");
+  const username = localStorage.getItem("email");
 
   //Dividimos el correo electrónico con split en el '@' y seleccionamos el primer elemento
   const username = email ? email.split('@')[0]:""; // se usan las comillas vacías para evitar que haya un error en caso de que el valor sea null
-  userLogout.textContent = `${username} |`;
+  
+  userDropdown.textContent = `${username} |`;
   renderLogoutLabel();
 }
-
-
-/*
-  //Cambiamos el texto del mismo elemento para que popule nuestro nombre de usuario, seguido de una barra (|)
-  userLogout.textContent = `${localStorage.getItem("email")} | `;
-  //Llamamos a la función para renderizar la opción de deslogueo
-  renderLogoutLabel();
-}
-*/
 
 //Creamos función para renderizar opción de deslogueo
 function renderLogoutLabel() {
@@ -86,3 +79,37 @@ function renderLogoutLabel() {
 
 //Finalmente, llamamos a la función renderUsername(), para que renderize el nombre de usuario y la opción para desloguearse
 renderUsername();
+*/
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Función para renderizar el nombre de usuario en el dropdown
+  function renderUsername() {
+    const userDropdown = document.getElementById("userDropdown");
+    const email = localStorage.getItem("email");
+
+    // Si hay un email almacenado, lo usamos; de lo contrario, mostramos "Usuario"
+    const username = email ? email.split('@')[0] : "Usuario";
+
+    if (userDropdown) {
+      userDropdown.textContent = username;
+    }
+  }
+
+  // Verificamos si el usuario está autenticado antes de mostrar el nombre
+  const loggedIn = localStorage.getItem("loggedIn");
+  
+  if (loggedIn === "loggedIn") {
+    renderUsername();
+    
+    // Asignar el evento para cerrar sesión
+    const logoutButton = document.getElementById("logoutButton");
+    if (logoutButton) {
+      logoutButton.addEventListener("click", function () {
+        localStorage.removeItem("loggedIn");
+        localStorage.removeItem("email");
+        window.location.href = "login.html"; // Redirigir a la página de login
+      });
+    }
+  }
+});
+

@@ -45,8 +45,14 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item"> <!-- Agregamos elemento que utilizaremos para popular el nombre de usuario y opción para desconectarse -->
-            <a class="nav-link" id="userLogout"></a>
+          <div class=" nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+            <ul class="dropdown-menu" aria-labelledby="userDropdown" id="dropdownContainer">
+              <li><a class="dropdown-item text-white" href="#">mi carrito</a></li>
+              <li><a class="dropdown-item text-white" href="my-profile.html">mi perfil</a></li>
+              <li><a class="dropdown-item" id="logoutButton" href="login.html">cerrar sesión</a></li>
+            </ul>
+          </div>
           </li>
         </ul>
       </div>
@@ -91,11 +97,11 @@
         <form class="flex-grow-1">
           <div class="form-group inputGroup">
               <label for="email" class="text-white mb-2">Correo electrónico <span>*</span></label>
-              <input type="text" class="form-control" id="email" required>
+              <input type="email" class="form-control" id="email" required>
           </div>
           <div class="form-group inputGroup">
-              <label for="segundo-nombre" class="text-white mb-2">Teléfono</label>
-              <input type="text" class="form-control" id="telefono">
+              <label for="number" class="text-white mb-2">Teléfono</label>
+              <input type="number" class="form-control" id="telefono">
           </div>
       </form>
       <div class="saveEditContainer">

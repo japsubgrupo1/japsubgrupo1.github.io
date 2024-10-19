@@ -630,6 +630,24 @@ a.custom-card:hover {
 }
 
 
+/*Sección navbar*/
+
+#logoutButton{
+  color: #f84857;
+}
+
+#userDropdown{
+  color:#ffffff;
+  background-color: #F09100; 
+  border-radius: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+#dropdownContainer{
+  background-color:#0000008a;
+}
+
 /* Media Queries */
 /* Tablets (en vertical) - hasta 768px */
 @media screen and (max-width: 768px) {

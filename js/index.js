@@ -22,3 +22,33 @@ function renderIndexPage() {
         window.location = "products.html"
     });
 }
+
+//Función para que se pueda acceder a mi perfil sólo si se está loggeado
+
+document.addEventListener("DOMContentLoaded",function(){
+
+    //Función que corrobora el estado del inicio de sesión
+    function checkLoginStatus(){
+        // Obtenemos el valor del localstorage
+        const loggedIn = localStorage.getItem("loggedIn");
+        // Devuelve el resultado de la comparación (booleano)
+        return loggedIn === "loggedIn";
+    }
+    
+    //Verificamos el estado de inicio de sesión
+    const isAuthenticated = checkLoginStatus();
+
+    //Definimos una constante que con querySelector seleccione el primer elemento que coincida con el selector elegido entre paréntesis
+    const profileLink = document.querySelector(".dropdown-item[href='my-profile.html']");
+
+    // Verificamos si el usuario está loggeado
+    if(profileLink){
+        profileLink.addEventListener("click", function (event) {
+            if (!isAuthenticated) {
+              // Si no está autenticado, prevenir la redirección
+              event.preventDefault();
+              window.location.href = "login.html"; // Redirige a la página de login
+            }
+        });
+    }
+});
