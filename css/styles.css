@@ -547,6 +547,33 @@ a.custom-card:hover {
   background: #979797; 
 }
 
+/* Sección perfil*/
+
+#profilePicture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#profilePicture img {
+  max-width: 100%;
+  height: auto;
+}
+
+#profilePicture button {
+  margin-top: 10px; /* Añadir margen entre la imagen y el botón */
+}
+
+#personalData{
+  padding: 2rem;
+}
+
+#contactData{
+  padding: 2rem;
+}
+
 /* Media Queries */
 /* Tablets (en vertical) - hasta 768px */
 @media screen and (max-width: 768px) {
