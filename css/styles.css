@@ -459,31 +459,31 @@ a.custom-card:hover {
   width: 30%;
 }
 
-  /* Sección calificaciones */
-  #califications-div > *{
-    margin-top: 1em;
-  }
+/* Sección calificaciones */
+#califications-div > *{
+  margin-top: 1em;
+}
 
-  #califications-div h4, textarea, h6 {
-    color: white;
-    font-family: 'Inria Sans', Arial, sans-serif;
-  }
+#califications-div h4, textarea, h6 {
+  color: white;
+  font-family: 'Inria Sans', Arial, sans-serif;
+}
 
-  #user-calification h5{
-    color: white;
-    font-family: 'Inria Sans', Arial, sans-serif
-  }
+#user-calification h5{
+  color: white;
+  font-family: 'Inria Sans', Arial, sans-serif
+}
 
-  #user-calification-btn{
-    margin-top: 2em;
-    background-color: #F09100;
-    color:white;
-    font-family: 'Inria Sans', Arial, sans-serif;
-  }
+#user-calification-btn{
+  margin-top: 2em;
+  background-color: #F09100;
+  color:white;
+  font-family: 'Inria Sans', Arial, sans-serif;
+}
 
-  #api-div{
-    height: 25em;
-  }
+#api-div{
+  height: 25em;
+}
   
 
   /* Estilos para las estrellas*/
@@ -635,6 +635,10 @@ a.custom-card:hover {
   justify-content: flex-end; /* Alinear el botón a la derecha */
   padding: 0 1rem; /* Espaciado a los lados del botón */
   margin-top: 50%;
+}
+
+#profileContainer input::placeholder {
+  color: transparent; /* Oculta el texto del placeholder */
 }
 
 /*Sección navbar*/
@@ -882,6 +886,16 @@ a.custom-card:hover {
     padding-top: 0%;
     padding-bottom: 2em;
   }
+
+/*Sección perfil */
+
+#profileContainer input::placeholder {
+  color: #757575;
+}
+
+form label{
+  display: none;
+}
 
 /* Ocultar banner en index.html una vez tenemos menos de 768px de ancho de pantalla */
 @media screen and (max-width: 767px) {
