@@ -460,31 +460,31 @@ a.custom-card:hover {
   width: 30%;
 }
 
-  /* Sección calificaciones */
-  #califications-div > *{
-    margin-top: 1em;
-  }
+/* Sección calificaciones */
+#califications-div > *{
+  margin-top: 1em;
+}
 
-  #califications-div h4, textarea, h6 {
-    color: white;
-    font-family: 'Inria Sans', Arial, sans-serif;
-  }
+#califications-div h4, textarea, h6 {
+  color: white;
+  font-family: 'Inria Sans', Arial, sans-serif;
+}
 
-  #user-calification h5{
-    color: white;
-    font-family: 'Inria Sans', Arial, sans-serif
-  }
+#user-calification h5{
+  color: white;
+  font-family: 'Inria Sans', Arial, sans-serif
+}
 
-  #user-calification-btn{
-    margin-top: 2em;
-    background-color: #F09100;
-    color:white;
-    font-family: 'Inria Sans', Arial, sans-serif;
-  }
+#user-calification-btn{
+  margin-top: 2em;
+  background-color: #F09100;
+  color:white;
+  font-family: 'Inria Sans', Arial, sans-serif;
+}
 
-  #api-div{
-    height: 25em;
-  }
+#api-div{
+  height: 25em;
+}
   
 
   /* Estilos para las estrellas*/
@@ -492,44 +492,45 @@ a.custom-card:hover {
     font-size: 2rem; /* Tamaño de las estrellas */
     color: #ccc;  /*Color de las estrellas sin seleccionar */
     cursor: pointer;
-}
+  }
 
-.star-rating .fa:hover,
-.star-rating .fa.selected {
-    color: #F09100 /* Color de las estrellas seleccionadas*/
-}
+  .star-rating .fa:hover,
+  .star-rating .fa.selected {
+      color: #F09100 /* Color de las estrellas seleccionadas*/
+  }
 
-.star-rating{
-  margin: 1em;
-}
+  .star-rating{
+    margin: 1em;
+  }
 
-.card{
-  background-color: #757575;
-}
+  .card{
+    background-color: #757575;
+  }
 
-.card-body{
-  background-color: #757575;
-  max-height: min-content;
-}
+  .card-body{
+    background-color: #757575;
+    max-height: min-content;
+  }
 
-#dateTime{
-  text-align: end;
-}
+/* Estilos para las calificaciones */
+  #dateTime{
+    text-align: end;
+  }
 
-#api-comments{
-  margin: 0.2em;
-  background-color: #979696;
-  border-radius: 0.5em;
-  
-}
+  #api-comments{
+    margin: 0.2em;
+    background-color: #979696;
+    border-radius: 0.5em;
+    
+  }
 
-#all-califications{
-  border: none;
-}
+  #all-califications{
+    border: none;
+  }
 
-#api-container{
-  border: none;
-}
+  #api-container{
+    border: none;
+  }
 
 /* Scroll bar personalizada*/
 
@@ -637,6 +638,10 @@ a.custom-card:hover {
   margin-top: 50%;
 }
 
+#profileContainer input::placeholder {
+  color: transparent; /* Oculta el texto del placeholder */
+}
+
 /*Sección navbar*/
 
 #logoutButton{
@@ -653,6 +658,15 @@ a.custom-card:hover {
 
 #dropdownContainer{
   background-color:#0000008a;
+}
+
+#navBarGrp{
+  padding-left:4em;
+  padding-right: 4em;
+}
+
+#userDropdownContainer{
+  padding-right: 2em;
 }
 
 /* Media Queries */
@@ -705,7 +719,7 @@ a.custom-card:hover {
   /*Place holders*/
   #email::placeholder, 
   #password::placeholder {
-    color:#757575; /* Puedes poner el color que prefieras para el placeholder */
+    color:#757575;
   }
 
   /* Estilizamos el footer */
@@ -843,6 +857,45 @@ a.custom-card:hover {
     overflow: visible !important;
     height: auto !important;
   }
+
+/* Nav bar */
+
+  #navBarGrp{
+    padding: 0%;
+  }
+
+  #navBarContainer{
+    padding: 1em !important;
+  }
+  
+  #userDropdownContainer{
+    margin-bottom: 1em;
+    justify-content: end !important;
+    padding: 0%!important;
+  }
+
+  #switchMode{
+    margin-left: 7%!important;
+  }
+
+  #dropdownContainer{
+    padding-bottom: 0.5em;
+    padding-right: 5em;
+  }
+
+  #profilePictureDiv{
+    padding-top: 0%;
+    padding-bottom: 2em;
+  }
+
+/*Sección perfil */
+
+#profileContainer input::placeholder {
+  color: #757575;
+}
+
+form label{
+  display: none;
 }
 
 /* Ocultar banner en index.html una vez tenemos menos de 768px de ancho de pantalla */
@@ -852,9 +905,8 @@ a.custom-card:hover {
   }
 
 }
-
-/* Celulares - hasta 320px */
-@media screen and (max-width: 320px) {
+/* Celulares - hasta 375px */
+@media screen and (max-width: 375px) {
   #loginLogo {
     /* Cambiamos el tamaño del logo */
     width: 90%;
@@ -918,7 +970,56 @@ a.custom-card:hover {
     max-width: none;
   }
 
-  #api-comments{
+/* Nav bar */
 
+  #switchMode{
+  padding-bottom: 0.5em;
+  margin-left: 75%;
   }
+
+  #navBarGrp{
+    padding: 0%;
+  }
+
+  #navBarContainer{
+    padding: 1em !important;
+  }
+  
+  #userDropdownContainer{
+    margin-bottom: 1em;
+    justify-content: end !important;
+    padding: 0%!important;
+  }
+
+  #dropdownContainer{
+    padding-right: 5em;
+  }
+
+  /* My profile */
+
+  #personalData, #contactData{
+    width: 90%;
+    max-width: none;
+  }
+
+  form label{
+    display: none;
+  }
+
+  #profilePictureDiv{
+    padding: 0%;
+    padding-bottom: 1em;
+  }
+
+  #profileContainer{
+    max-height: none;
+  }
+
+  .saveEditContainer{
+    position:sticky;
+    padding: 0%;
+    margin: 0%;
+  }
+
+}
 }
