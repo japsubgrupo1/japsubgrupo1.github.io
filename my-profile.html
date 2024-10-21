@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
   <!-- Importamos Google Fonts: "Inria Sans" y "Raleway" (la última ya importada) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900"
+    rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -51,94 +53,97 @@
     </div>
     <div class="container container justify-content-center" id="userDropdownContainer">
       <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+        <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false"></a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown" id="dropdownContainer">
-          <li><a class="dropdown-item text-white" href="#">mi carrito</a></li>
-          <li><a class="dropdown-item text-white" href="my-profile.html">mi perfil</a></li>
-          <li><a class="dropdown-item" id="logoutButton" href="login.html">cerrar sesión</a></li>
+          <li><a class="dropdown-item text-white" href="cart.html">Carrito</a></li>
+          <li><a class="dropdown-item text-white" href="my-profile.html">Perfil</a></li>
+          <li><a class="dropdown-item" id="logoutButton" href="login.html">Cerrar sesión</a></li>
         </ul>
       </div>
     </div>
     <!-- Slider de modo oscuro / claro -->
-     <div id="switchMode">
+    <div id="switchMode">
       <li class="nav-item align-items-center d-flex">
         <i class="fas fa-sun" style="color: white"></i>
         <div class="ms-2 form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="themeSwitch"/>
+          <input class="form-check-input" type="checkbox" role="switch" id="themeSwitch" />
         </div>
         <i class="fas fa-moon" style="color: white"></i>
       </li>
-     </div>
+    </div>
   </nav>
 
   <main>
-  <div class="container-fluid mt-5 mb-5" >
-    <div class="row justify-content-center" id="profileContainer">
-      <!--Columna foto de perfil-->
-      <div class="col-xl-2 col-sm-12" id="profilePictureDiv">
-        <div id="pfpContainer">
-          <img src="./img/profile-picture.png" alt="Foto de perfil" id="profilePicture">
+    <div class="container-fluid mt-5 mb-5">
+      <div class="row justify-content-center" id="profileContainer">
+        <!--Columna foto de perfil-->
+        <div class="col-xl-2 col-sm-12" id="profilePictureDiv">
+          <div id="pfpContainer">
+            <img src="./img/profile-picture.png" alt="Foto de perfil" id="profilePicture">
+          </div>
+          <input type="file" accept="image/*" id="pfpChange" hidden>
+          <label for="pfpChange" class="btn btn-primary mt-2" id="pfpBtn">Editar foto</label>
         </div>
-        <input type="file" accept="image/*" id="pfpChange" hidden>
-        <label for="pfpChange" class="btn btn-primary mt-2" id="pfpBtn">Editar foto</label>
-      </div>
 
-      <!-- Columna datos personales -->
-      <div class="col-md-5 col-xl-4 text-left" id="personalData">
-        <h4 class="text-center mb-4">Datos personales</h4>
-        <form class="flex-grow-1">
-          <div class="form-group inputGroup">
+        <!-- Columna datos personales -->
+        <div class="col-md-5 col-xl-4 text-left" id="personalData">
+          <h4 class="text-center mb-4">Datos personales</h4>
+          <form class="flex-grow-1">
+            <div class="form-group inputGroup">
               <label for="nombre" class="text-white mb-2">Nombre <span>*</span></label>
-              <input type="text" class="form-control" id="nombre" placeholder="Nombre *" required >
-          </div>
-          <div class="form-group inputGroup">
-              <label for="segundo-nombre" class="text-white mb-2">Segundo Nombre</label>
-              <input type="text" class="form-control" id="segundo-nombre" placeholder="Segundo Nombre">
-          </div>
-          <div class="form-group inputGroup">
+              <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+            </div>
+            <div class="form-group inputGroup">
+              <label for="segundo-nombre" class="text-white mb-2">Segundo nombre</label>
+              <input type="text" class="form-control" id="segundo-nombre" placeholder="Segundo nombre">
+            </div>
+            <div class="form-group inputGroup">
               <label for="apellido" class="text-white mb-2">Apellido <span>*</span></label>
-              <input type="text" class="form-control" id="apellido" placeholder="Apellido *" required>
-          </div>
-          <div class="form-group inputGroup">
-              <label for="segundo-apellido" class="text-white mb-2">Segundo Apellido</label>
-              <input type="text" class="form-control" id="segundo-apellido" placeholder="Segundo Apellido">
-          </div>
-      </form>
-      </div>
+              <input type="text" class="form-control" id="apellido" placeholder="Apellido" required>
+            </div>
+            <div class="form-group inputGroup">
+              <label for="segundo-apellido" class="text-white mb-2">Segundo apellido</label>
+              <input type="text" class="form-control" id="segundo-apellido" placeholder="Segundo apellido">
+            </div>
+          </form>
+        </div>
 
-      <!-- Columna datos de contacto -->
-      <div class="col-md-5 col-xl-4 text-left" id="contactData">
-        <h4 class="text-center mb-4">Datos de contacto</h4>
-        <form class="flex-grow-1">
-          <div class="form-group inputGroup">
+        <!-- Columna datos de contacto -->
+        <div class="col-md-5 col-xl-4 text-left" id="contactData">
+          <h4 class="text-center mb-4">Datos de contacto</h4>
+          <form class="flex-grow-1">
+            <div class="form-group inputGroup">
               <label for="email" class="text-white mb-2">Correo electrónico <span>*</span></label>
-              <input type="email" class="form-control" id="email" placeholder="Correo electrónico" required >
-          </div>
-          <div class="form-group inputGroup">
-              <label for="number" class="text-white mb-2">Teléfono</label>
+              <input type="email" class="form-control" id="email" autocomplete="email" required>
+            </div>
+            <div class="form-group inputGroup">
+              <label for="telefono" class="text-white mb-2">Teléfono</label>
               <input type="number" class="form-control" id="telefono" placeholder="Teléfono">
+            </div>
+          </form>
+          <div class="saveEditContainer">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-auto">
+              <button class="btn btn-primary" id="saveEditBtn" type="submit">Guardar cambios</button>
+            </div>
           </div>
-      </form>
-      <div class="saveEditContainer">
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-auto">
-          <button class="btn btn-primary" id="saveEditBtn" type="submit">Guardar cambios</button>
         </div>
       </div>
     </div>
-  </div>
-  </div>
-</main>
+  </main>
 
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
 </body>
+
 </html>
