@@ -23,3 +23,46 @@ pfpChange.addEventListener("change", () => {
 //Cargamos la imagen guardada en localStorage al iniciar la página
 const pfpSrc = localStorage.getItem("pfpSrc") || "/img/profile-picture.png"; //profile-picture.png siendo el valor por defecto
 changePfp(pfpSrc); //Llamamos a la función para establecer la imagen inicial
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Buscamos el formulario
+    const form = document.querySelectorAll(".needs-validation");
+
+    
+    Array.from(form).forEach(form => {
+        form.addEventListener("submit", event => {
+            // Obtenemos los elementos a utilizar
+            const personalDatos = document.getElementById("formpersonaldata");
+            const personalDataFormName = document.getElementById("nombre").value; 
+            const personalDataFormSecondName = document.getElementById("segundo-nombre").value;
+            const personalDataFormSureName = document.getElementById("apellido").value;
+            const personalDataFormSecondSureName = document.getElementById("segundo-apellido").value;
+            const personalDataFormEmail = document.getElementById("email").value;
+            const personalDataFormCellphone = document.getElementById("telefono").value; 
+
+            // Validamos el formulario
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }else{
+                saveDataToLocalStorage()
+            }
+
+            
+            personalDatos.classList.add("was-validated");
+
+            //guardamos en el localstorage
+            function saveDataToLocalStorage(){
+            localStorage.setItem('nombreDatosPerfil', personalDataFormName);
+            localStorage.setItem('segundoNombreDatosPerfil', personalDataFormSecondName);
+            localStorage.setItem('apellidoDatosPerfil', personalDataFormSureName);
+            localStorage.setItem('segundoApellidoDatosPerfil', personalDataFormSecondSureName);
+            localStorage.setItem('emailDatosPerfil', personalDataFormEmail);
+            localStorage.setItem('telefonoDatosPerfil', personalDataFormCellphone);
+        }
+
+           
+        }, false);
+    });
+});
+
