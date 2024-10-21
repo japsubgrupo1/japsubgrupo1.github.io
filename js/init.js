@@ -88,8 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const logoutButton = document.getElementById("logoutButton");
     if (logoutButton) {
       logoutButton.addEventListener("click", function () {
-        localStorage.removeItem("loggedIn");
-        localStorage.removeItem("email");
+        localStorage.clear(); // Limpia todos los datos de localStorage al cerrar sesión
         window.location.href = "login.html"; // Redirigir a la página de login
       });
     }
