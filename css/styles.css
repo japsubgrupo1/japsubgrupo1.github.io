@@ -70,6 +70,10 @@ nav a {
 }
 
 /* Modificado por el equipo para que se le aplique el mismo espaciado a la imágen con el logo */
+
+*{
+  font-family: 'Inria Sans', Arial, sans-serif;
+}
 footer, #loginLogo {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -668,6 +672,39 @@ a.custom-card:hover {
 #userDropdownContainer{
   padding-right: 2em;
 }
+
+/*Mi carrito*/
+
+#my-cart-container{
+  background-color: #0000002d;
+  border-radius: 8px;
+  flex-shrink:0;
+  justify-content: center;
+}
+
+.card-product{
+  flex-shrink: unset;
+}
+
+#myCart button{
+  background-color: #212529;
+  border-color: #F09100;
+}
+
+#paymentContainer p{
+  padding-left: 2em;
+  padding-right: 1em;
+  margin: 0%;
+}
+
+#product-container{
+  background-color: #2125294d;
+}
+
+.card-body {
+  background-color: transparent; /* O el color que prefieras */
+}
+
 
 /* Media Queries */
 /* Tablets (en vertical) - hasta 768px */
