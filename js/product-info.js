@@ -18,7 +18,7 @@ function showProduct() {
         <div class="col" id="productInfo">
             <small class="text-muted">${product.category} | ${product.soldCount} vendidos</small>
             <h4 class="mb-1" id="productInfoName">${product.name}</h4>
-            <h4 class="mb-1" id="productInfoCost">${product.currency} ${product.cost}</h4> <a href="cart.html" class="mb-1 btn btn-warning .fs-5 text fw-bold" id="buy-button">Comprar</a>
+            <h4 class="mb-1" id="productInfoCost">${product.currency} ${product.cost}</h4> <a class="mb-1 btn btn-warning .fs-5 text fw-bold" id="buyBtn" onclick="buyItem()">Comprar</a>
             <h4 class="mb-1" id="productInfoDesc">${product.description}</h4>
             <p>Artículos recomendados:</p>
             <div class="col" id="relatedProducts">
@@ -35,7 +35,6 @@ function showProduct() {
 
 // Función para obtener los comentarios desde la API
 async function getComments() {
-
     //Constante que almacena la URL de la API
     const productCommentsUrl = `${PRODUCT_INFO_COMMENTS_URL}${localStorage.getItem("prodID")}${EXT_TYPE}`;// Concatenamos el ID del prodcuto a la URL desde la constante declarada en init.js para luego obter de ahí el mismo ID que está almacenado en localstorage
     //
@@ -51,7 +50,6 @@ async function getComments() {
 
 // Función para mostrar las calificaciones en pantalla
 function showComments(comments) {
-    
     const container = document.getElementById("all-califications"); // Obtenemos el contenedor all-califications que está en el HTML
     container.innerHTML = "";  // Limpiar el contenedor antes de agregar nuevos comentarios
 
@@ -113,7 +111,7 @@ function imgSwap(clickedImg) {
 
 //Función para hacer zoom
 function zoom() {
-    if(window.innerWidth <= 768) { //Caso en el que el ancho de la pantalla es igual o menor a 768px (tablet / celular)
+    if (window.innerWidth <= 768) { //Caso en el que el ancho de la pantalla es igual o menor a 768px (tablet / celular)
         null; //Aquí se hará una función para agrandar la imagen de alguna forma aún no decidida, ya que de momento se ve bien en el dispositivo
     } else { //Caso contrario (escritorio)
         prodImageMain.style.transform = "scale(1.5)"; //Agrandar imagen
@@ -156,30 +154,30 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
     //Cargamos los comentarios del producto
-     const productCommentsUrl = `${PRODUCT_INFO_COMMENTS_URL}${localStorage.getItem("prodID")}${EXT_TYPE}`;
-    
-     // Obtener los comentarios usando fetch
-     fetch(productCommentsUrl)
-         .then(response => response.json())
-         .then(comments => {
-             console.log("Comentarios obtenidos:", comments); // Verificar en consola
-             showComments(comments); // Mostrar los comentarios en la página
-         })
-         .catch(error => {
-             console.error("Error al obtener comentarios:", error);
-         });
+    const productCommentsUrl = `${PRODUCT_INFO_COMMENTS_URL}${localStorage.getItem("prodID")}${EXT_TYPE}`;
 
-         function addComment() {
-            // Obtener los valores del formulario
-            const user = document.getElementById("userName").value;
-            const description = document.getElementById("userComment").value;
-            const score = parseInt(document.getElementById("userRating").value);
-            const dateTime = new Date().toISOString(); // Obtener la fecha y hora actual en formato ISO (ej: 2024-10-06T14:23:42.511Z)
-        
-            // Validación para asegurarse de que los campos estén completos
-            if (user && description) {
-                // Crear el HTML del nuevo comentario
-                const newCommentHTML = `
+    // Obtener los comentarios usando fetch
+    fetch(productCommentsUrl)
+        .then(response => response.json())
+        .then(comments => {
+            console.log("Comentarios obtenidos:", comments); // Verificar en consola
+            showComments(comments); // Mostrar los comentarios en la página
+        })
+        .catch(error => {
+            console.error("Error al obtener comentarios:", error);
+        });
+
+    function addComment() {
+        // Obtener los valores del formulario
+        const user = document.getElementById("userName").value;
+        const description = document.getElementById("userComment").value;
+        const score = parseInt(document.getElementById("userRating").value);
+        const dateTime = new Date().toISOString(); // Obtener la fecha y hora actual en formato ISO (ej: 2024-10-06T14:23:42.511Z)
+
+        // Validación para asegurarse de que los campos estén completos
+        if (user && description) {
+            // Crear el HTML del nuevo comentario
+            const newCommentHTML = `
                     <div class="comment card mb-2" id="api-container">
                         <div class="card-body" id="api-comments">
                             <div class="row">
@@ -204,27 +202,32 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         </div>
                     </div>
                 `;
-        
-                // Agregar el nuevo comentario al contenedor 'all-califications'
-                const container = document.getElementById("all-califications");
-                container.innerHTML += newCommentHTML;  // Añadir el nuevo comentario sin borrar los existentes
-        
-                // Limpiar los campos del formulario
-                document.getElementById("userName").value = "";
-                document.getElementById("userComment").value = "";
-                document.getElementById("userRating").value = "5";
-            } else {
-                alert("Falta completar datos.");
-            }
+
+            // Agregar el nuevo comentario al contenedor 'all-califications'
+            const container = document.getElementById("all-califications");
+            container.innerHTML += newCommentHTML;  // Añadir el nuevo comentario sin borrar los existentes
+
+            // Limpiar los campos del formulario
+            document.getElementById("userName").value = "";
+            document.getElementById("userComment").value = "";
+            document.getElementById("userRating").value = "5";
+        } else {
+            alert("Falta completar datos.");
         }
-        //botón submitComment al evento de clic
-document.getElementById("submitComment").addEventListener("click", function() {
-    addComment(); // Llama a la función addComment cuando se hace clic en el botón
+    }
+    //Botón submitComment al evento de clic
+    document.getElementById("submitComment").addEventListener("click", function () {
+        addComment(); // Llama a la función addComment cuando se hace clic en el botón
+    });
 });
 
-
-});
-
-function cartRedirection(){
-    location.href="cart.html"
-};
+function buyItem() {
+    if (localStorage.getItem("cartItems") === null) {
+        const prodID = Array(localStorage.getItem("prodID"));
+        localStorage.setItem("cartItems", JSON.stringify(prodID));
+    } else {
+        const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+        cartItems.push(localStorage.getItem("prodID"));
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }
+}
