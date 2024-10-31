@@ -18,7 +18,7 @@ function showProduct() {
         <div class="col" id="productInfo">
             <small class="text-muted">${product.category} | ${product.soldCount} vendidos</small>
             <h4 class="mb-1" id="productInfoName">${product.name}</h4>
-            <h4 class="mb-1" id="productInfoCost">${product.currency} ${product.cost}</h4>
+            <h4 class="mb-1" id="productInfoCost">${product.currency} ${product.cost}</h4> <a href="cart.html" class="mb-1 btn btn-warning .fs-5 text fw-bold">Comprar</a>
             <h4 class="mb-1" id="productInfoDesc">${product.description}</h4>
             <p>Artículos recomendados:</p>
             <div class="col" id="relatedProducts">
@@ -224,3 +224,7 @@ document.getElementById("submitComment").addEventListener("click", function() {
 
 
 });
+
+function cartRedirection(){
+    location.href="cart.html"
+};
