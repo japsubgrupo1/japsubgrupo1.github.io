@@ -6,6 +6,7 @@ function showProduct() {
 
     htmlContentToAppend += `
         <div class="col" id="prodImagesDiv">
+        // el profe dice que acá deberaímos de hacer que itere en vez de tener estático
             <img onclick="imgSwap(prodImage1)" id="prodImage1" src="${product.images[0]}" alt="${product.name}">
             <img onclick="imgSwap(prodImage2)" id="prodImage2" src="${product.images[1]}" alt="${product.name}">
             <img onclick="imgSwap(prodImage3)" id="prodImage3" src="${product.images[2]}" alt="${product.name}">
@@ -103,6 +104,7 @@ function getStarsHTML(score) {
 //Defimos función para guardar el producto al clickearlo
 function setProdID(id) {
     localStorage.setItem("prodID", id); //Guardamos el ID del producto clickeado en la key prodID en localStorage
+    // podemos llamar esta función para guardar en el carrito?
     window.location.href = "product-info.html"; //Redirigimos a product-info.html
 }
 
