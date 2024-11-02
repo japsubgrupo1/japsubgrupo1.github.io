@@ -1073,7 +1073,18 @@ form label{
 }
 }
 
-#buy-button{
+#buyBtn{
   width: 150px;
   font-size: 20px;
+}
+
+#cart-badge{
+  background-color:#F09100;
+  
+ margin-left:5px;
+
+}
+.dropdown-item {
+  display: flex;
+  
 }
