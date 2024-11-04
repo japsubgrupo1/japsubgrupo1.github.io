@@ -4,9 +4,9 @@ let product;
 function showProduct() {
     let htmlContentToAppend = "";
 
+    //el profe acá dice que deberíamos de hacerlo dinámico y no estático
     htmlContentToAppend += `
         <div class="col" id="prodImagesDiv">
-        // el profe dice que acá deberaímos de hacer que itere en vez de tener estático
             <img onclick="imgSwap(prodImage1)" id="prodImage1" src="${product.images[0]}" alt="${product.name}">
             <img onclick="imgSwap(prodImage2)" id="prodImage2" src="${product.images[1]}" alt="${product.name}">
             <img onclick="imgSwap(prodImage3)" id="prodImage3" src="${product.images[2]}" alt="${product.name}">

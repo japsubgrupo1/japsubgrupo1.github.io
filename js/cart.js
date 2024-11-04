@@ -99,7 +99,7 @@ async function getProductDetails(productId) {
     try {
         // Hacemos una solicitud para obtener los detalles del producto
         const response = await fetch(`${PRODUCT_INFO_URL}${productId}.json`);
-        // Si la respuesta no es válida lanzamos un error
+        // Si la respuesta no es válida, envía un error
         if (!response.ok) throw new Error("No se pudo obtener la información del producto");
 
         // Convertimos la respuesta en JSON
