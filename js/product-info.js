@@ -1,12 +1,14 @@
 //Definimos array con los productos, originalmente vacía
 let product;
 
+let productCount=0;
+
 function showProduct() {
     let htmlContentToAppend = "";
 
     //el profe acá dice que deberíamos de hacerlo dinámico y no estático
     htmlContentToAppend += `
-        <div class="col" id="prodImagesDiv">
+        <div class="col" id="prodImagesDiv">      
             <img onclick="imgSwap(prodImage1)" id="prodImage1" src="${product.images[0]}" alt="${product.name}">
             <img onclick="imgSwap(prodImage2)" id="prodImage2" src="${product.images[1]}" alt="${product.name}">
             <img onclick="imgSwap(prodImage3)" id="prodImage3" src="${product.images[2]}" alt="${product.name}">
@@ -222,14 +224,22 @@ document.addEventListener("DOMContentLoaded", function (e) {
         addComment(); // Llama a la función addComment cuando se hace clic en el botón
     });
 });
+ 
+//Función para el boton comprar
+
+
 
 function buyItem() {
-    if (localStorage.getItem("cartItems") === null) {
-        const prodID = Array(localStorage.getItem("prodID"));
-        localStorage.setItem("cartItems", JSON.stringify(prodID));
-    } else {
-        const cartItems = JSON.parse(localStorage.getItem("cartItems"));
-        cartItems.push(localStorage.getItem("prodID"));
+    let cartItems=JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    const prodID=localStorage.getItem("prodID");
+
+    if (prodID) {
+        cartItems.push(prodID);
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    }
+    } 
+    location.href="cart.html";
+
+    cartBadge(cartItems.length);
 }
+
