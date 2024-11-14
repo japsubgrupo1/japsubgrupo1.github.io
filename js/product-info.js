@@ -241,5 +241,6 @@ function buyItem() {
     location.href="cart.html";
 
     cartBadge(cartItems.length);
+    initializeCartBadge();
 }
 

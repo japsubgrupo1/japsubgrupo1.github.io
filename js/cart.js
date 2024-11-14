@@ -133,9 +133,11 @@ async function removeCartItem(productId) {
 
     // Llamamos a showCart para mostrar los cambios en el carrito
     showCart(); // Actualiza la vista del carrito
+    initializeCartBadge();
 }
 
 // Llamamos a showCart cuando la página haya cargado
 document.addEventListener("DOMContentLoaded", () => {
     showCart(); // Inicializa el carrito al cargar la página
+    
 });
