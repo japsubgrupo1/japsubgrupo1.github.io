@@ -61,20 +61,59 @@
           <h3 class="text-center my-5 fw-bold">Mi carrito</h3>
         </div>
       </div>
-      <div class="row mb-4" id="my-cart-container"> <!-- Contenedor que tendrá las tarjetas de productos -->
+      <div class="row" id="my-cart-container"> <!-- Contenedor que tendrá las tarjetas de productos -->
       </div>
-  
-      <div class="row" id="paymentContainer">
-        <div class="col-12 d-flex justify-content-end align-items-center my-2">
-          <h4 class="fw-bold me-3">Total</h4>
-          <p id="totalAmount">#total</p> <!-- Cambié a un id para poder actualizarlo desde JS -->
+
+      <div class="row pt-2 pb-4 px-4" id="paymentContainer">
+        <div class="col-9" id="paymentShippingPanel">
+            <div class="row">
+                <div class="col-4">
+                    <p class="optionTitle fw-bold fs-5">Método de pago</p>
+                    <!-- <p class="optionSelectedTxt">localStorage(payment)</p> -->
+                    <p class="optionSelectedTxt">Transferencia bancaria</p>
+                </div>
+                <div class="col-4">
+                    <p class="optionTitle fw-bold fs-5">Tipo de envío</p>
+                    <!-- <p class="optionSelectedTxt">localStorage(shippingType)</p> -->
+                    <p class="optionSelectedTxt">Express</p>
+                </div>
+                <div class="col-4" id="addressInfo">
+                    <p class="optionTitle fw-bold fs-5">Dirección</p>
+                    <!--<p class="optionSelectedTxt">
+                      localStorage(addressStreet) + localStorage(addressNumber) <br>
+                      localStorage(addressNbh) + localStorage(adressCity)
+                    </p>-->
+                    <p class="optionSelectedTxt" > 
+                      Avenida Principal 123<br>
+                      Barrio, Ciudad
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="col-12 d-grid gap-2 d-md-flex justify-content-md-end">
+
+        <div class="col-3 ps-4 d-flex flex-column" id="checkoutContainer">
+            <div class="row">
+                <div class="col-5">
+                    <h4 class="fw-bold">Envío</h4>
+                </div>
+                <div class="col-7">
+                    <button class="btn btn-primary px-5" id="shippingBtn">Seleccionar</button>
+                </div>
+            </div>
+            <div class="row w-100">
+                <div class="col-6">
+                    <h4 class="fw-bold">Total</h4>
+                </div>
+                <div class="col-6">
+                    <p id="totalAmount">#total</p>
+                </div>
+            </div>
+        <div class="d-grid gap-2 mx-auto" id="paymentBtnContainer">
           <button class="btn btn-primary mb-4 px-5" id="paymentBtn" type="submit" value="pagar">Pagar</button>
         </div>
-      </div>
     </div>
-  </main>
+  </div>
+</main>
 
   <footer class="text-muted">
     <div class="container">
