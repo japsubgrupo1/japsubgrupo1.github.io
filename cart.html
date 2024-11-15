@@ -69,21 +69,15 @@
             <div class="row">
                 <div class="col-4">
                     <p class="optionTitle fw-bold fs-5">Método de pago</p>
-                    <!-- <p class="optionSelectedTxt">localStorage(payment)</p> -->
-                    <p class="optionSelectedTxt">Transferencia bancaria</p>
+                    <p class="optionSelectedTxt" id="paymentSelected">Transferencia bancaria</p>
                 </div>
                 <div class="col-4">
                     <p class="optionTitle fw-bold fs-5">Tipo de envío</p>
-                    <!-- <p class="optionSelectedTxt">localStorage(shippingType)</p> -->
-                    <p class="optionSelectedTxt">Express</p>
+                    <p class="optionSelectedTxt" id="shippingSelected">Express</p>
                 </div>
                 <div class="col-4" id="addressInfo">
                     <p class="optionTitle fw-bold fs-5">Dirección</p>
-                    <!--<p class="optionSelectedTxt">
-                      localStorage(addressStreet) + localStorage(addressNumber) <br>
-                      localStorage(addressNbh) + localStorage(adressCity)
-                    </p>-->
-                    <p class="optionSelectedTxt" > 
+                    <p class="optionSelectedTxt" id="addressSelected"> 
                       Avenida Principal 123<br>
                       Barrio, Ciudad
                     </p>
@@ -103,7 +97,6 @@
                   <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
@@ -156,7 +149,7 @@
                               </div>
                               <div class="mb-3">
                                 <label for="formGroupExampleInput" class="form-label">Calle</label>
-                                <input type="text" class="form-control" id="addressInput" placeholder="Calle">
+                                <input type="text" class="form-control" id="streetInput" placeholder="Calle">
                               </div>
                               <div class="mb-3">
                                 <label for="formGroupExampleInput2" class="form-label">Número de puerta</label>
@@ -171,7 +164,7 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">confirmar</button>
+                        <button type="button" class="btn btn-primary" id="confirmBtn">confirmar</button>
                       </div>
                     </div>
                   </div>

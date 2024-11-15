@@ -91,7 +91,7 @@ async function showCart() {
     }
 
     // Actualizamos el total en el contenedor correspondiente
-    document.querySelector("#paymentContainer h4 + p").textContent = `$${total}`;
+    document.querySelector("#totalAmount").textContent = `$${total}`;
 }
 
 // Función para obtener los detalles de un producto específico
@@ -136,8 +136,79 @@ async function removeCartItem(productId) {
     initializeCartBadge();
 }
 
-// Llamamos a showCart cuando la página haya cargado
-document.addEventListener("DOMContentLoaded", () => {
-    showCart(); // Inicializa el carrito al cargar la página
+//Función para el modal
+const confirmButton = document.getElementById('confirmBtn');
+
+function saveShippingData() {
+    const department = document.getElementById('cityInput').value;
+    const city = document.getElementById('nbhInput').value;
+    const street = document.getElementById('streetInput').value;
+    const addressNumber = document.getElementById('addressNumber').value;
+    const corner = document.getElementById('secondAdressInput').value;
+
+    // Opciones seleccionadas
+    const shippingOption = document.querySelector('input[name="shippingOption"]:checked').id;
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').id;
+
+    // Crea un objeto con los datos
+    const shippingData = {
+        department,
+        city,
+        street,
+        addressNumber,
+        corner,
+        shippingOption,
+        paymentMethod
+    };
+
+    // Almacena el objeto en localStorage como string
+    localStorage.setItem('shippingData', JSON.stringify(shippingData));
+    console.log('Datos de envío guardados:', shippingData);
+}
+
+function closeModal() {
+    const modal = document.querySelector('#staticBackdrop');
+    const bootstrapModal = bootstrap.Modal.getInstance(modal);
+    if (bootstrapModal) {
+        bootstrapModal.hide();
+    }
+}
+
+
+
+confirmButton.addEventListener('click', () => {
+    saveShippingData();
+    closeModal();
+    showShippingData(); 
+});
+
+
+// Función para mostrar lo alojado en localStorage
+function showShippingData() {
+        const shippingData = JSON.parse(localStorage.getItem('shippingData'));
     
+        if (shippingData) {
+            const paymentLabel = document.querySelector(`label[for="${shippingData.paymentMethod}"]`).textContent;
+            const shippingLabel = document.querySelector(`label[for="${shippingData.shippingOption}"]`).textContent;
+    
+            document.getElementById('paymentSelected').textContent = paymentLabel;
+            document.getElementById('shippingSelected').textContent = shippingLabel;
+
+            const addressFormatted = `${shippingData.street} ${shippingData.addressNumber}<br>${shippingData.department}, ${shippingData.locality}`;
+            document.getElementById('addressSelected').innerHTML = addressFormatted;
+        } else {
+            document.getElementById('paymentSelected').textContent = 'no seleccionado';
+            document.getElementById('shippingSelected').textContent = 'no seleccionado';
+            document.getElementById('addressSelected').innerHTML = 'no seleccionado';
+        }
+    }
+    
+// Llamar a la función para actualizar la información al cargar la página
+document.addEventListener('DOMContentLoaded', showShippingData);
+    
+
+// Llamamos a showCart y showShippingData cuando la página haya cargado
+document.addEventListener("DOMContentLoaded", () => {
+    showCart();
+    showShippingData();
 });
