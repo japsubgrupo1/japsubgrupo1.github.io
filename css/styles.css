@@ -677,7 +677,7 @@ a.custom-card:hover {
 
 #my-cart-container{
   background-color: #0000002d;
-  border-radius: 8px;
+  border-radius: 8px 8px 0px 0px;
   flex-shrink:0;
   justify-content: center;
 }
@@ -692,11 +692,40 @@ a.custom-card:hover {
 }
 
 #paymentContainer p{
-  padding-left: 2em;
-  padding-right: 1em;
   padding-top: 0.5em;
-  margin-right: 2em;
 }
+
+.optionSelectedTxt{
+  background-color: #343a40;
+  color: white;
+  border-radius: 8px;
+  padding: 0.5em!important;
+}
+
+#shippingBtn{
+  background-color: #F09100;
+  border-color: transparent;
+  padding: 0.5em !important;
+}
+
+#infoContainer{
+  background-color: #0000002d;
+  border-radius: 0px 0px 8px 8px;
+}
+
+#product-container{
+  background-color: #2125294d;
+}
+#paymentShippingPanel {
+  background-color: #2125294d;
+  border-radius: 8px;
+}
+
+.optionTitle{
+  color:#343a40;
+  margin-bottom: 0.3em !important;
+}
+
 
 .material-symbols-outlined {
   font-variation-settings:
@@ -706,15 +735,8 @@ a.custom-card:hover {
   'opsz' 24
 }
 
-#product-container{
-  background-color: #2125294d;
-}
-
 .card-body {
   background-color: transparent;
-}
-
-#deleteCartItemBtn{
 }
 
 
