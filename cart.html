@@ -64,7 +64,7 @@
       <div class="row" id="my-cart-container"> <!-- Contenedor que tendrá las tarjetas de productos -->
       </div>
 
-      <div class="row pt-2 pb-4 px-4" id="paymentContainer">
+      <div class="row pt-2 pb-4 px-4" id="infoContainer">
         <div class="col-9" id="paymentShippingPanel">
             <div class="row">
                 <div class="col-4">
@@ -97,10 +97,87 @@
                     <h4 class="fw-bold">Envío</h4>
                 </div>
                 <div class="col-7">
-                    <button class="btn btn-primary px-5" id="shippingBtn">Seleccionar</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="shippingBtn">Seleccionar</button>
+                </div>
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="container">
+                          <div class="row">
+
+                            <!--Tipo de envío y Método de pago -->
+                            <div class="col-6 d-flex flex-column justify-content-between">
+                              <!-- Tipo de envío -->
+                              <div>
+                                <h4>Tipo de envío</h4>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="shippingOption" id="premium">
+                                  <label class="form-check-label" for="premium">Premium 2 a 5 días (15%)</label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="shippingOption" id="express" checked>
+                                  <label class="form-check-label" for="express">Express 5 a 8 días (7%)</label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="shippingOption" id="standard">
+                                  <label class="form-check-label" for="standard">Standard 12 a 15 días (5%)</label>
+                                </div>
+                              </div>
+
+                              <!-- Método de pago -->
+                              <div>
+                                <h4>Método de pago</h4>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard">
+                                  <label class="form-check-label" for="creditCard">Tarjeta de crédito</label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" checked>
+                                  <label class="form-check-label" for="bankTransfer">Transferencia bancaria</label>
+                                </div>
+                              </div>
+                            </div>
+                      
+                            <!--Dirección -->
+                            <div class="col-6">
+                              <h4>Datos de envío</h4>
+                              <div class="mb-3">
+                                <label for="formGroupExampleInput" class="form-label">Departamento</label>
+                                <input type="text" class="form-control" id="cityInput" placeholder="Departamento">
+                              </div>
+                              <div class="mb-3">
+                                <label for="formGroupExampleInput2" class="form-label">Localidad</label>
+                                <input type="text" class="form-control" id="nbhInput" placeholder="Localidad">
+                              </div>
+                              <div class="mb-3">
+                                <label for="formGroupExampleInput" class="form-label">Calle</label>
+                                <input type="text" class="form-control" id="addressInput" placeholder="Calle">
+                              </div>
+                              <div class="mb-3">
+                                <label for="formGroupExampleInput2" class="form-label">Número de puerta</label>
+                                <input type="text" class="form-control" id="addressNumber" placeholder="Número de puerta">
+                              </div>
+                              <div class="mb-3">
+                                <label for="formGroupExampleInput2" class="form-label">Esquina</label>
+                                <input type="text" class="form-control" id="secondAdressInput" placeholder="Esquina">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">confirmar</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
-            <div class="row w-100">
+            <div class="row w-100" id="paymentContainer">
                 <div class="col-6">
                     <h4 class="fw-bold">Total</h4>
                 </div>
