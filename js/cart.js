@@ -1,5 +1,6 @@
 let total= 0;// Variable para almacenar el total
 updateTotalDisplay()
+
 // Función para mostrar el contenido del carrito
 async function showCart() {
     // Obtenemos el contenedor donde se mostrará el carrito
@@ -145,14 +146,25 @@ async function removeCartItem(productId) {
     
 }
 
-const shippingPercentages = {
-  standard:0.05,
-  express:0.07,
-  premium:0.15
-};
-
 //Función para el modal
 const confirmButton = document.getElementById('confirmBtn');
+
+const shippingPercentages = {
+    standard:0.05,
+    express:0.07,
+    premium:0.15
+  };
+
+//Función para actualizar los totales
+function updateTotalDisplay() {
+
+    if (isNaN(total) || total < 0) {
+        total = 0;  // Si el total no es válido, lo reiniciamos a 0
+    }
+    // Mostramos el total 
+    document.querySelector("#productCost").textContent = `$${total}`;
+    document.querySelector("#totalAmount").textContent = `$${total.toFixed(2)}`;
+};
 
 function saveShippingData() {
     const department = document.getElementById('cityInput').value;
@@ -170,9 +182,10 @@ function saveShippingData() {
         shippingCost = total * shippingPercentages[selectedShipping];
     }
     
+    document.querySelector("#shippingCost").textContent = `$${shippingCost.toFixed(2)}`;
+    
     // Actualizamos el total agregando el costo de envío
     const totalWithShipping = total + shippingCost;
-
     document.querySelector("#totalAmount").textContent = `$${totalWithShipping.toFixed(2)}`;
 
     const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').id;
@@ -274,16 +287,11 @@ function showShippingData() {
         }
     }
     
-// Llamar a la función para actualizar la información al cargar la página
-document.addEventListener('DOMContentLoaded', showShippingData);
-    
-
 // Llamamos a showCart y showShippingData cuando la página haya cargado
 document.addEventListener("DOMContentLoaded", () => {
     showCart();
     showShippingData();
-    updateTotalDisplay()
-    
+    updateTotalDisplay();
 });
 
 
@@ -294,12 +302,3 @@ document.querySelectorAll('input[name="shippingOption"]').forEach((input) => {
     });
 });
 
-//Función para actualizar el total
-function updateTotalDisplay() {
-
-    if (isNaN(total) || total < 0) {
-        total = 0;  // Si el total no es válido, lo reiniciamos a 0
-    }
-    // Mostramos el total 
-    document.querySelector("#totalAmount").textContent = `$${total.toFixed(2)}`;
-};

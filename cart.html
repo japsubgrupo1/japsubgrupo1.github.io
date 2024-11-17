@@ -66,148 +66,159 @@
 
       <div class="row pt-2 pb-4 px-4" id="infoContainer">
         <div class="col-9" id="paymentShippingPanel">
-            <div class="row">
-                <div class="col-4">
+            <div class="row pt-2">
+                <div class="col-4 mt-2">
                     <p class="optionTitle fw-bold fs-5">Método de pago</p>
                     <p class="optionSelectedTxt" id="paymentSelected"></p>
                 </div>
-                <div class="col-4">
+                <div class="col-4 mt-2">
                     <p class="optionTitle fw-bold fs-5">Tipo de envío</p>
                     <p class="optionSelectedTxt" id="shippingSelected"></p>
                 </div>
-                <div class="col-4" id="addressInfo">
+                <div class="col-4 mt-2" id="addressInfo">
                     <p class="optionTitle fw-bold fs-5">Dirección</p>
                     <p class="optionSelectedTxt" id="addressSelected"> 
                     </p>
                 </div>
             </div>
-        </div>
-
-        <div class="col-3 ps-4 d-flex flex-column" id="checkoutContainer">
             <div class="row">
-                <div class="col-5">
-                    <h4 class="fw-bold">Envío</h4>
-                </div>
-                <div class="col-7">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="shippingBtn">Seleccionar</button>
-                </div>
+              <div class="col-12 text-end mt-2 mb-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="shippingBtn">Seleccionar</button>
+              </div>
+          </div>
+          
 
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-xl">
-                    <div class="modal-content" id="modalContainer">
-                      <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="container">
-                          <div class="row justify-content-evenly">
-                            <!-- Tipo de envío y Método de pago -->
-                            <div class="col-4 d-flex flex-column">
-                              <!-- Tipo de envío -->
-                              <div class="mb-5 novalidate" id="shippingContainer">
-                                <h4>Tipo de envío</h4>
-                                <div class="content-options">
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="shippingOption" id="premium" required>
-                                    <label class="form-check-label" for="premium">Premium 2 a 5 días (15%)</label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="shippingOption" id="express" required>
-                                    <label class="form-check-label" for="express">Express 5 a 8 días (7%)</label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="shippingOption" id="standard" required>
-                                    <label class="form-check-label" for="standard">Standard 12 a 15 días (5%)</label>
-                                  </div>
-                                  <div class="invalid-feedback" id="shippingError">
-                                    Por favor seleccione el tipo de envío.
-                                </div>
-                                </div>
-                              </div>
-                              <!-- Método de pago -->
-                              <div id="paymentContainer">
-                                <h4>Método de pago</h4>
-                                <div class="content-options novalidate">
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" required>
-                                    <label class="form-check-label" for="creditCard">Tarjeta de crédito</label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" required>
-                                    <label class="form-check-label" for="bankTransfer">Transferencia bancaria</label>
-                                  </div>
-                                  <div class="invalid-feedback" id="paymentError">
-                                    Por favor seleccione el método de pago.
-                                </div>
-                                </div>
-                              </div>
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content" id="modalContainer">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="container">
+                    <div class="row justify-content-evenly">
+                      <!-- Tipo de envío y Método de pago -->
+                      <div class="col-4 d-flex flex-column">
+                        <!-- Tipo de envío -->
+                        <div class="mb-5 novalidate" id="shippingContainer">
+                          <h4>Tipo de envío</h4>
+                          <div class="content-options">
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="shippingOption" id="premium" required>
+                              <label class="form-check-label" for="premium">Premium 2 a 5 días (15%)</label>
                             </div>
-                
-                            <!-- Dirección -->
-                            <div class="col-6" id="addressContainer">
-                              <h4>Datos de envío</h4>
-                              <form class="needs-validation" id="addressForm" novalidate>
-                                <div class="content-options">
-                                  <div class="mb-3">
-                                    <label for="cityInput" class="form-label">Departamento</label>
-                                    <input type="text" class="form-control" id="cityInput" placeholder="Departamento" required>
-                                    <div class="invalid-feedback">
-                                      Por favor, ingresa el departamento.
-                                    </div>
-                                  </div>
-                                  <div class="mb-3">
-                                    <label for="nbhInput" class="form-label">Localidad</label>
-                                    <input type="text" class="form-control" id="nbhInput" placeholder="Localidad" required>
-                                    <div class="invalid-feedback">
-                                      Por favor, ingresa el barrio o localidad.
-                                    </div>
-                                  </div>
-                                  <div class="mb-3">
-                                    <label for="streetInput" class="form-label">Calle</label>
-                                    <input type="text" class="form-control" id="streetInput" placeholder="Calle" required>
-                                    <div class="invalid-feedback">
-                                      Por favor, ingresa el nombre de la calle.
-                                    </div>
-                                  </div>
-                                  <div class="mb-3">
-                                    <label for="addressNumber" class="form-label">Número de puerta</label>
-                                    <input type="text" class="form-control" id="addressNumber" placeholder="Número de puerta" required>
-                                    <div class="invalid-feedback">
-                                      Por favor, ingresa el número de puerta.
-                                    </div>
-                                  </div>
-                                  <div class="mb-3">
-                                    <label for="secondAdressInput" class="form-label">Esquina</label>
-                                    <input type="text" class="form-control" id="secondAdressInput" placeholder="Esquina" required>
-                                    <div class="invalid-feedback">
-                                      Por favor ingresa el nombre de la esquina.
-                                    </div>
-                                  </div>
-                                </div>
-                              </form>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="shippingOption" id="express" required>
+                              <label class="form-check-label" for="express">Express 5 a 8 días (7%)</label>
                             </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="shippingOption" id="standard" required>
+                              <label class="form-check-label" for="standard">Standard 12 a 15 días (5%)</label>
+                            </div>
+                            <div class="invalid-feedback" id="shippingError">
+                              Por favor seleccione el tipo de envío.
+                          </div>
+                          </div>
+                        </div>
+                        <!-- Método de pago -->
+                        <div id="paymentContainer">
+                          <h4>Método de pago</h4>
+                          <div class="content-options novalidate">
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" required>
+                              <label class="form-check-label" for="creditCard">Tarjeta de crédito</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" required>
+                              <label class="form-check-label" for="bankTransfer">Transferencia bancaria</label>
+                            </div>
+                            <div class="invalid-feedback" id="paymentError">
+                              Por favor seleccione el método de pago.
+                          </div>
                           </div>
                         </div>
                       </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="confirmBtn">Confirmar</button>
+          
+                      <!-- Dirección -->
+                      <div class="col-6" id="addressContainer">
+                        <h4>Datos de envío</h4>
+                        <form class="needs-validation" id="addressForm" novalidate>
+                          <div class="content-options">
+                            <div class="mb-3">
+                              <label for="cityInput" class="form-label">Departamento</label>
+                              <input type="text" class="form-control" id="cityInput" placeholder="Departamento" required>
+                              <div class="invalid-feedback">
+                                Por favor, ingresa el departamento.
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="nbhInput" class="form-label">Localidad</label>
+                              <input type="text" class="form-control" id="nbhInput" placeholder="Localidad" required>
+                              <div class="invalid-feedback">
+                                Por favor, ingresa el barrio o localidad.
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="streetInput" class="form-label">Calle</label>
+                              <input type="text" class="form-control" id="streetInput" placeholder="Calle" required>
+                              <div class="invalid-feedback">
+                                Por favor, ingresa el nombre de la calle.
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="addressNumber" class="form-label">Número de puerta</label>
+                              <input type="text" class="form-control" id="addressNumber" placeholder="Número de puerta" required>
+                              <div class="invalid-feedback">
+                                Por favor, ingresa el número de puerta.
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="secondAdressInput" class="form-label">Esquina</label>
+                              <input type="text" class="form-control" id="secondAdressInput" placeholder="Esquina" required>
+                              <div class="invalid-feedback">
+                                Por favor ingresa el nombre de la esquina.
+                              </div>
+                            </div>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="confirmBtn">Confirmar</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-                <div class="row w-100" id="paymentContainer">
-                  <div class="col-6">
-                    <h4 class="fw-bold">Total</h4>
-                  </div>
-                  <div class="col-6">
-                    <p id="totalAmount">#total</p>
-                  </div>
-                </div>
-                <div class="d-grid gap-2 mx-auto" id="paymentBtnContainer">
-                  <button class="btn btn-primary mb-4 px-5" id="paymentBtn" type="submit" value="pagar">Finalizar compra</button>
-                </div>
-                
+        </div>
+
+        <div class="col-3 ps-4 d-flex flex-column" id="checkoutContainer">
+          <div class="row w-100" id="paymentContainer">
+              <div class="col-6">
+                  <h4 class="fw-bold">Envío</h4>
+              </div>
+              <div class="col-6">
+                <p id="shippingCost">no seleccionado</p>
+              </div>
+            <div class="col-6">
+              <h4 class="fw-bold">Subtotal</h4>
+            </div>
+            <div class="col-6">
+              <p id="productCost">no seleccionado</p>
+            </div>
+            <div class="col-6">
+              <h4 class="fw-bold">Total</h4>
+            </div>
+            <div class="col-6">
+              <p id="totalAmount">no seleccionado</p>
+            </div>
+          </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="paymentBtnContainer">
+              <button class="btn btn-primary ms-2 me-3" id="paymentBtn" type="submit" value="pagar">Finalizar compra</button>
+            </div>    
+
 </main>
 
   <footer class="text-muted">
