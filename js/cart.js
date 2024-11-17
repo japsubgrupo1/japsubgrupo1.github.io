@@ -1,3 +1,27 @@
+// Función para obtener los detalles de un producto específico
+async function getProductDetails(productId) {
+    try {
+        // Hacemos una solicitud para obtener los detalles del producto
+        const response = await fetch(`${PRODUCT_INFO_URL}${productId}.json`);
+        // Si la respuesta no es válida, envía un error
+        if (!response.ok) throw new Error("No se pudo obtener la información del producto");
+
+        // Convertimos la respuesta en JSON
+        const productData = await response.json();
+        // Retornamos los detalles que necesitamos del producto
+        return {
+            id: productData.id,
+            name: productData.name,
+            cost: productData.cost,
+            img: productData.images || [] // Nos aseguramos que haya imágenes
+        };
+    } catch (error) {
+        // En caso de que ocurra un error lo mostramos en la consola
+        console.error("Error al obtener los detalles del producto:", error);
+        return null; // Retornamos null en caso de error
+    }
+}
+
 // Función para mostrar el contenido del carrito
 async function showCart() {
     // Obtenemos el contenedor donde se mostrará el carrito
@@ -94,30 +118,6 @@ async function showCart() {
     document.querySelector("#totalAmount").textContent = `$${total}`;
 }
 
-// Función para obtener los detalles de un producto específico
-async function getProductDetails(productId) {
-    try {
-        // Hacemos una solicitud para obtener los detalles del producto
-        const response = await fetch(`${PRODUCT_INFO_URL}${productId}.json`);
-        // Si la respuesta no es válida, envía un error
-        if (!response.ok) throw new Error("No se pudo obtener la información del producto");
-
-        // Convertimos la respuesta en JSON
-        const productData = await response.json();
-        // Retornamos los detalles que necesitamos del producto
-        return {
-            id: productData.id,
-            name: productData.name,
-            cost: productData.cost,
-            img: productData.images || [] // Nos aseguramos que haya imágenes
-        };
-    } catch (error) {
-        // En caso de que ocurra un error lo mostramos en la consola
-        console.error("Error al obtener los detalles del producto:", error);
-        return null; // Retornamos null en caso de error
-    }
-}
-
 // Función para eliminar un producto del carrito
 async function removeCartItem(productId) {
     // Obtenemos los elementos del carrito desde localStorage
@@ -147,8 +147,8 @@ function saveShippingData() {
     const corner = document.getElementById('secondAdressInput').value;
 
     // Opciones seleccionadas
-    const shippingOption = document.querySelector('input[name="shippingOption"]:checked').id;
-    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').id;
+    const shippingOption = document.querySelector('input[name="shippingOption"]:checked')?.id;
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.id;
 
     // Crea un objeto con los datos
     const shippingData = {
@@ -174,12 +174,55 @@ function closeModal() {
     }
 }
 
+confirmButton.addEventListener('click', function(event) {
+    event.preventDefault(); // Evitar comportamiento predeterminado del botón (para validación)
 
+    // Obtener el formulario de "Datos de envío"
+    const addressForm = document.querySelector("#addressForm");
+    const shippingContainer = document.querySelector("#shippingContainer");
+    const paymentContainer = document.querySelector("#paymentContainer");
 
-confirmButton.addEventListener('click', () => {
+    // Obtener los contenedores de error
+    const shippingError = document.querySelector("#shippingError");
+    const paymentError = document.querySelector("#paymentError");
+
+    // Validar el formulario de dirección
+    const isAddressFormValid = addressForm.checkValidity();
+    // Validar tipo de envío
+    const isShippingSelected = document.querySelector('input[name="shippingOption"]:checked') !== null;
+    // Validar método de pago
+    const isPaymentSelected = document.querySelector('input[name="paymentMethod"]:checked') !== null;
+
+    // Si el formulario de dirección no es válido
+    if (!isAddressFormValid) {
+        addressForm.classList.add("was-validated");
+    }
+
+    // Si no se seleccionó tipo de envío, mostrar el mensaje de error
+    if (!isShippingSelected) {
+        shippingContainer.classList.add("was-validated");
+        shippingError.style.display = "block"; //
+    } else {
+        shippingError.style.display = "none";
+    }
+
+    // Si no se seleccionó método de pago, mostrar el mensaje de error
+    if (!isPaymentSelected) {
+        paymentContainer.classList.add("was-validated");
+        paymentError.style.display = "block";
+    } else {
+        paymentError.style.display = "none";
+    }
+
+    // Si alguno de los formularios no es válido, detener ejecución
+    if (!isAddressFormValid || !isShippingSelected || !isPaymentSelected) {
+        return;
+    }
+
+    // Si todo es válido, guardar los datos
     saveShippingData();
     closeModal();
-    showShippingData(); 
+    showShippingData();  // Asegúrate de tener esta función implementada
 });
 
 
@@ -212,3 +255,8 @@ document.addEventListener("DOMContentLoaded", () => {
     showCart();
     showShippingData();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
+    myModal.show();
+  });
