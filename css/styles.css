@@ -739,7 +739,38 @@ a.custom-card:hover {
   background-color: transparent;
 }
 
+#modalContainer{
+  background-color: #979797;
+}
 
+.modal-header {
+  border: transparent;
+}
+
+.modal-footer{
+  border: transparent;
+}
+
+.modal-body h4{
+  color: white;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.form-check-input:checked {
+  background-color: #F09100; /* Color de fondo al seleccionar */
+  border-color: #F09100;     /* Cambia el color del borde */
+}
+
+.content-options{
+  background-color: #F8F9FA;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.form-check{
+  margin: 15px;
+}
 /* Media Queries */
 /* Tablets (en vertical) - hasta 768px */
 @media screen and (max-width: 768px) {
@@ -976,6 +1007,11 @@ form label{
   }
 
 }
+
+.form-check{
+  margin: 0%;
+}
+
 /* Celulares - hasta 375px */
 @media screen and (max-width: 375px) {
   #loginLogo {
@@ -1109,4 +1145,10 @@ form label{
 .dropdown-item {
   display: flex;
   
+}
+
+/* My cart */
+
+.form-check{
+  margin: 0%;
 }

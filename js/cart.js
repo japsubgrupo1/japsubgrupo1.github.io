@@ -1,4 +1,3 @@
-
 let total= 0;// Variable para almacenar el total
 updateTotalDisplay()
 // Función para mostrar el contenido del carrito
@@ -102,7 +101,6 @@ async function showCart() {
     document.querySelector("#totalAmount").textContent = `$${total}`;
 }
 
-// Función para obtener los detalles de un producto específico
 async function getProductDetails(productId) {
     try {
         // Hacemos una solicitud para obtener los detalles del producto
@@ -163,8 +161,8 @@ function saveShippingData() {
     const addressNumber = document.getElementById('addressNumber').value;
     const corner = document.getElementById('secondAdressInput').value;
 
-    // Opciones seleccionadas
-    const shippingOption = document.querySelector('input[name="shippingOption"]:checked').id;
+    // Opciones seleccionada
+    const shippingOption = document.querySelector('input[name="shippingOption"]:checked')?.id;
     let shippingCost = 0;
 
     if (shippingOption) {
@@ -204,12 +202,55 @@ function closeModal() {
     }
 }
 
+confirmButton.addEventListener('click', function(event) {
+    event.preventDefault(); // Evitar comportamiento predeterminado del botón (para validación)
 
+    // Obtener el formulario de "Datos de envío"
+    const addressForm = document.querySelector("#addressForm");
+    const shippingContainer = document.querySelector("#shippingContainer");
+    const paymentContainer = document.querySelector("#paymentContainer");
 
-confirmButton.addEventListener('click', () => {
+    // Obtener los contenedores de error
+    const shippingError = document.querySelector("#shippingError");
+    const paymentError = document.querySelector("#paymentError");
+
+    // Validar el formulario de dirección
+    const isAddressFormValid = addressForm.checkValidity();
+    // Validar tipo de envío
+    const isShippingSelected = document.querySelector('input[name="shippingOption"]:checked') !== null;
+    // Validar método de pago
+    const isPaymentSelected = document.querySelector('input[name="paymentMethod"]:checked') !== null;
+
+    // Si el formulario de dirección no es válido
+    if (!isAddressFormValid) {
+        addressForm.classList.add("was-validated");
+    }
+
+    // Si no se seleccionó tipo de envío, mostrar el mensaje de error
+    if (!isShippingSelected) {
+        shippingContainer.classList.add("was-validated");
+        shippingError.style.display = "block"; //
+    } else {
+        shippingError.style.display = "none";
+    }
+
+    // Si no se seleccionó método de pago, mostrar el mensaje de error
+    if (!isPaymentSelected) {
+        paymentContainer.classList.add("was-validated");
+        paymentError.style.display = "block";
+    } else {
+        paymentError.style.display = "none";
+    }
+
+    // Si alguno de los formularios no es válido, detener ejecución
+    if (!isAddressFormValid || !isShippingSelected || !isPaymentSelected) {
+        return;
+    }
+
+    // Si todo es válido, guardar los datos
     saveShippingData();
     closeModal();
-    showShippingData(); 
+    showShippingData();  // Asegúrate de tener esta función implementada
 });
 
 
@@ -246,7 +287,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
 // Asegurarse de que el costo de envío se recalcule cuando cambie la opción
 document.querySelectorAll('input[name="shippingOption"]').forEach((input) => {
     input.addEventListener('change', () => {
@@ -263,4 +303,3 @@ function updateTotalDisplay() {
     // Mostramos el total 
     document.querySelector("#totalAmount").textContent = `$${total.toFixed(2)}`;
 };
-
