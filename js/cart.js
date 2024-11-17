@@ -1,27 +1,5 @@
-// Función para obtener los detalles de un producto específico
-async function getProductDetails(productId) {
-    try {
-        // Hacemos una solicitud para obtener los detalles del producto
-        const response = await fetch(`${PRODUCT_INFO_URL}${productId}.json`);
-        // Si la respuesta no es válida, envía un error
-        if (!response.ok) throw new Error("No se pudo obtener la información del producto");
-
-        // Convertimos la respuesta en JSON
-        const productData = await response.json();
-        // Retornamos los detalles que necesitamos del producto
-        return {
-            id: productData.id,
-            name: productData.name,
-            cost: productData.cost,
-            img: productData.images || [] // Nos aseguramos que haya imágenes
-        };
-    } catch (error) {
-        // En caso de que ocurra un error lo mostramos en la consola
-        console.error("Error al obtener los detalles del producto:", error);
-        return null; // Retornamos null en caso de error
-    }
-}
-
+let total= 0;// Variable para almacenar el total
+updateTotalDisplay()
 // Función para mostrar el contenido del carrito
 async function showCart() {
     // Obtenemos el contenedor donde se mostrará el carrito
@@ -36,13 +14,17 @@ async function showCart() {
     if (cartItems.length === 0) {
         // Si está vacío, mostramos un mensaje en el contenedor
         container.innerHTML = "<p>El carrito está vacío</p>";
+
+        total=0;//Actualizamos el total a 0
         // Aseguramos que el total se muestre como 0
         document.querySelector("#paymentContainer h4 + p").textContent = "$0"; 
         return;
     }
 
     const productCount = {}; // Objeto para contar la cantidad de cada producto
-    let total = 0; // Variable para almacenar el total
+     
+    total = 0;//Reiniciamos el total
+    
 
     // Recorremos los IDs de los productos en el carrito
     cartItems.forEach((productId) => {
@@ -71,6 +53,7 @@ async function showCart() {
         const subtotal = product.cantidad * productDetails.cost;
         // Actualizamos el total sumando el subtotal
         total += subtotal;
+        
 
         // Estructura HTML para mostrar la tarjeta del producto
         let productHTML = `
@@ -113,9 +96,33 @@ async function showCart() {
         // Agregamos el contenido HTML de la tarjeta del producto al contenedor
         container.innerHTML += productHTML;
     }
-
+    updateTotalDisplay()
     // Actualizamos el total en el contenedor correspondiente
     document.querySelector("#totalAmount").textContent = `$${total}`;
+}
+
+async function getProductDetails(productId) {
+    try {
+        // Hacemos una solicitud para obtener los detalles del producto
+        const response = await fetch(`${PRODUCT_INFO_URL}${productId}.json`);
+        // Si la respuesta no es válida, envía un error
+        if (!response.ok) throw new Error("No se pudo obtener la información del producto");
+
+        // Convertimos la respuesta en JSON
+        const productData = await response.json();
+        // Retornamos los detalles que necesitamos del producto
+        return {
+            id: productData.id,
+            name: productData.name,
+            cost: productData.cost,
+            img: productData.images || [] // Nos aseguramos que haya imágenes
+        };
+    } catch (error) {
+        // En caso de que ocurra un error lo mostramos en la consola
+        console.error("Error al obtener los detalles del producto:", error);
+        return null; // Retornamos null en caso de error
+    }
+    
 }
 
 // Función para eliminar un producto del carrito
@@ -134,7 +141,15 @@ async function removeCartItem(productId) {
     // Llamamos a showCart para mostrar los cambios en el carrito
     showCart(); // Actualiza la vista del carrito
     initializeCartBadge();
+    updateTotalDisplay()
+    
 }
+
+const shippingPercentages = {
+  standard:0.05,
+  express:0.07,
+  premium:0.15
+};
 
 //Función para el modal
 const confirmButton = document.getElementById('confirmBtn');
@@ -146,9 +161,21 @@ function saveShippingData() {
     const addressNumber = document.getElementById('addressNumber').value;
     const corner = document.getElementById('secondAdressInput').value;
 
-    // Opciones seleccionadas
+    // Opciones seleccionada
     const shippingOption = document.querySelector('input[name="shippingOption"]:checked')?.id;
-    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.id;
+    let shippingCost = 0;
+
+    if (shippingOption) {
+        const selectedShipping = shippingOption;
+        shippingCost = total * shippingPercentages[selectedShipping];
+    }
+    
+    // Actualizamos el total agregando el costo de envío
+    const totalWithShipping = total + shippingCost;
+
+    document.querySelector("#totalAmount").textContent = `$${totalWithShipping.toFixed(2)}`;
+
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').id;
 
     // Crea un objeto con los datos
     const shippingData = {
@@ -164,6 +191,7 @@ function saveShippingData() {
     // Almacena el objeto en localStorage como string
     localStorage.setItem('shippingData', JSON.stringify(shippingData));
     console.log('Datos de envío guardados:', shippingData);
+    
 }
 
 function closeModal() {
@@ -254,9 +282,24 @@ document.addEventListener('DOMContentLoaded', showShippingData);
 document.addEventListener("DOMContentLoaded", () => {
     showCart();
     showShippingData();
+    updateTotalDisplay()
+    
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
-    myModal.show();
-  });
+
+// Asegurarse de que el costo de envío se recalcule cuando cambie la opción
+document.querySelectorAll('input[name="shippingOption"]').forEach((input) => {
+    input.addEventListener('change', () => {
+        saveShippingData();  // Recalcular y actualizar el total cuando elija una opción de envío
+    });
+});
+
+//Función para actualizar el total
+function updateTotalDisplay() {
+
+    if (isNaN(total) || total < 0) {
+        total = 0;  // Si el total no es válido, lo reiniciamos a 0
+    }
+    // Mostramos el total 
+    document.querySelector("#totalAmount").textContent = `$${total.toFixed(2)}`;
+};
