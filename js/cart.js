@@ -302,3 +302,47 @@ document.querySelectorAll('input[name="shippingOption"]').forEach((input) => {
     });
 });
 
+function finishedPurchase() {
+    // Verificar si el carrito tiene productos
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    if (cartItems.length === 0) {
+        alert("Tu carrito está vacío. Agrega productos antes de proceder con la compra.");
+        return;
+    }
+
+    
+    const shippingContainer = JSON.parse(localStorage.getItem('shippingData'));
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+
+    // Verificar si los datos de envío están en localStorage 
+    if (!shippingContainer) {
+        alert("Por favor, completa la información de envío antes de finalizar la compra.");
+        return;
+    }
+    //Verificar que la información de compra este en el localStorage
+    if (!paymentMethod) {
+        alert("Por favor, completa la información de pago antes de finalizar la compra.");
+        return;
+    }
+
+    //Mostramos mensaje de compra realizada
+    alert("¡Compra exitosa!");
+
+    // Limpiar el carrito 
+    localStorage.removeItem("cartItems");  
+    localStorage.removeItem("shippingData");
+    localStorage.removeItem("paymentMethod");
+
+    //Resetamos el mont6o calculado de envío
+    document.querySelector("#shippingCost").textContent = "$0";
+
+    // Actualizar la vista del carrito 
+    showCart(); 
+    updateTotalDisplay();
+    
+    // Limpiar los datos de envío
+    showShippingData();
+   
+    
+    
+}
