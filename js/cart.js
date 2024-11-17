@@ -188,7 +188,7 @@ function saveShippingData() {
     const totalWithShipping = total + shippingCost;
     document.querySelector("#totalAmount").textContent = `$${totalWithShipping.toFixed(2)}`;
 
-    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').id;
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.id;
 
     // Crea un objeto con los datos
     const shippingData = {
