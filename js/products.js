@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     //A esta variable se le agrega el valor de la key catID almacenada en localStorage, la cual define la función setCatID, en categories.js (línea 38)
     //A esto finalmente le añadimos el .json, tomándolo de EXT_TYPE para hacerlo más fancy (definido en init.js)
     //Un ejemplo de URL generado puede ser el de Autos, dando como resultado https://japceibal.github.io/emercado-api/cats_products/101.json
-    const categoryUrl = `${PRODUCTS_URL}${localStorage.getItem("catID")}${EXT_TYPE}`;
+    const categoryUrl = `${PRODUCTS_URL}${localStorage.getItem("catID")}`;
 
     //Traemos los datos
     getJSONData(categoryUrl).then(function(resultObj) {

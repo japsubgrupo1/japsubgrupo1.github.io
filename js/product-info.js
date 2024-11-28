@@ -39,7 +39,7 @@ function showProduct() {
 // Función para obtener los comentarios desde la API
 async function getComments() {
     //Constante que almacena la URL de la API
-    const productCommentsUrl = `${PRODUCT_INFO_COMMENTS_URL}${localStorage.getItem("prodID")}${EXT_TYPE}`;// Concatenamos el ID del prodcuto a la URL desde la constante declarada en init.js para luego obter de ahí el mismo ID que está almacenado en localstorage
+    const productCommentsUrl = `${PRODUCT_INFO_COMMENTS_URL}${localStorage.getItem("prodID")}`;// Concatenamos el ID del prodcuto a la URL desde la constante declarada en init.js para luego obter de ahí el mismo ID que está almacenado en localstorage
     //
     try {
         const response = await fetch(productCommentsUrl); // el código espera la respuesta del fetch para ejecutarse
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     //A esta variable se le agrega el valor de la key prodID almacenada en localStorage, la cual define la función setProdID, en products.js (línea 40)
     //A esto finalmente le añadimos el .json, tomándolo de EXT_TYPE para hacerlo más fancy (definido en init.js)
     //Un ejemplo de URL generado puede ser el del Chevrolet Onix Joy, dando como resultado https://japceibal.github.io/emercado-api/products/50921.json
-    const productUrl = `${PRODUCT_INFO_URL}${localStorage.getItem("prodID")}${EXT_TYPE}`;
+    const productUrl = `${PRODUCT_INFO_URL}${localStorage.getItem("prodID")}`;
 
     //Traemos los datos
     getJSONData(productUrl).then(function (resultObj) {
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
     //Cargamos los comentarios del producto
-    const productCommentsUrl = `${PRODUCT_INFO_COMMENTS_URL}${localStorage.getItem("prodID")}${EXT_TYPE}`;
+    const productCommentsUrl = `${PRODUCT_INFO_COMMENTS_URL}${localStorage.getItem("prodID")}`;
 
     // Obtener los comentarios usando fetch
     fetch(productCommentsUrl)

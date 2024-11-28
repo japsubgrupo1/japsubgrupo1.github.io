@@ -105,7 +105,7 @@ async function showCart() {
 async function getProductDetails(productId) {
     try {
         // Hacemos una solicitud para obtener los detalles del producto
-        const response = await fetch(`${PRODUCT_INFO_URL}${productId}.json`);
+        const response = await fetch(`${PRODUCT_INFO_URL}${productId}`);
         // Si la respuesta no es válida, envía un error
         if (!response.ok) throw new Error("No se pudo obtener la información del producto");
 
